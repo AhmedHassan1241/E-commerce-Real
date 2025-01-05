@@ -1,0 +1,24 @@
+
+ .popular h2{
+    position: relative;
+}
+.popular a {
+text-decoration: none !important;
+}
+.popular a h2::after{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 0;
+    height: 1px;
+    background-color: #000;
+    border-radius: 2px;
+    transform: scale(1);
+    transform-origin: left;
+    transition: transform 0.3s;
+}
+.popular h2:hover::after {
+   transform: scale(1);
+   height: 8px;
+}

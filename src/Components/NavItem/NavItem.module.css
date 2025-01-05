@@ -1,0 +1,50 @@
+.bag-icon::before{
+    content: "0";
+    position: absolute;
+    right: -8px;
+    top: -2px;
+    background-color: rgb(82, 0, 82);
+    width: 17px;
+    height: 17px;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.up-nav div{
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+.up-nav div a{
+    color: inherit;
+    font-weight: 300;
+    font-size: 13px;
+    text-decoration: none;
+}
+.up-nav div a:hover{
+    color: inherit;
+    font-weight: 300;
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+form-control {
+    border: 1px solid #949393;
+    border-radius: 0.18rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding-left:0.6rem;
+  }
+  
+  .form-control:focus {
+    border-color: black;
+    box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.25);
+  }
+  
+  .form-control::placeholder {
+    color: #000000;
+    font-weight: 300;
+    opacity: 0.5;
+  }
+
