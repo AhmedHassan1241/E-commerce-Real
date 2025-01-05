@@ -1,5 +1,5 @@
 import arrowImg from "../../Assets/Images/arrow.svg";
-import styles from "./Buttons.module.css";
+import "./Buttons.css";
 const PrimaryButton = ({ children }) => {
   return (
     <>

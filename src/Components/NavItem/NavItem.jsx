@@ -4,7 +4,7 @@ import { FaRegUser } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 
-import styles from "./NavItem.module.css";
+import "./NavItem.css";
 import { useState } from "react";
 
 const NavItem = () => {

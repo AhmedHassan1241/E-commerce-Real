@@ -4,7 +4,7 @@ export {default as SeasonSaleCard} from './SeasonSaleCard/SeasonSaleCard';
 export {default as SectionWrapper} from "./SectionWrapper/SectionWrapper"
 export {default as PrimaryButton} from './Buttons/Buttons';
 export {SecondaryButton} from './Buttons/Buttons';
-
+export {default as Category} from "./CategoryCard/Category";
 export {default as CarouselSliderSale}from './CarouselSliderSale/CarouselSliderSale';
 export {default as SectionHeader} from "./SectionHeader/SectionHeader"
 export {default as SaleCard}from './SaleCard/SaleCard';

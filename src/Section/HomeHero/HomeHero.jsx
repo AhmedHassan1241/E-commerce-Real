@@ -1,5 +1,5 @@
 import { PrimaryButton } from "../../Components";
-import styles from "./HomeHero.module.css";
+import "./HomeHero.css";
 const HomeHero = () => {
   return (
     <>

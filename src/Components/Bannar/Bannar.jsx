@@ -1,4 +1,4 @@
-import styles from './Bannar.module.css'
+import './Bannar.css'
 const Bannar = () => {
   return (
     <>
