@@ -4,7 +4,7 @@ import SeasonSaleData from "../../Data/SeasonSaleData"
 // import { Footer, Header, HomeHero, Popular, Yeezy } from "../../Section"
 // import SaleData from "./../../Data/SaleData";
 
-import { Header, HomeHero, } from "../../Section"
+import { Header, HomeHero, Popular, } from "../../Section"
 
 
 const Home = () => {

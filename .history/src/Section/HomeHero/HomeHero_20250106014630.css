@@ -1,0 +1,45 @@
+ .home{
+    background-image: url("../../Assets/Images/homeImg.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+.home .title-home{
+    background-color: rgba(0, 0, 255, 0.114);
+    border-radius: 10;
+
+}
+.home .btns{}
+
+@media (max-width:800px) {
+    
+ .home{
+    background-image: url("../../Assets/Images/home_imgSmallScreen.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 133vh;
+    gap: 70px;
+    
+ }
+ .home .title-home h1{
+     margin: 45px 0;
+ }
+.home .btns{
+    height: "22.2rem";
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+}
+
+@media (min-width:802px) {
+    .home .title-home{
+        width: 50%;
+    }
+    .home{
+        height:76vh
+    }
+
+ 
+}

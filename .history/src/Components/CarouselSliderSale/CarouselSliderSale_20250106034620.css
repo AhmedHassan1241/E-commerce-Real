@@ -1,0 +1,30 @@
+.carousel-container {
+    position: relative;
+  }
+  
+  .carousel-arrow {
+    font-size: 50px;
+    background-color: #ffffff;
+    color: #000;
+    padding: 8px;
+    border: 2px solid #000;
+  }
+  
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .indicator {
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 50%;
+    border: none;
+    margin: 0 5px;
+  }
+  
+  .active-indicator {
+    background-color: black;
+  }
+  

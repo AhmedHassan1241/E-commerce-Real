@@ -1,9 +1,9 @@
-import {NavItem,Bannar} from '../../Components/index'
+import {NavItem} from '../../Components/index'
 
 const Header = () => {
   return (
     <>
-      <Bannar/>
+      {/* <Bannar/> */}
       <NavItem/>
     </>
   )

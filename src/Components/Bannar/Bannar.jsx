@@ -3,7 +3,7 @@ const Bannar = () => {
   return (
     <>
       <div
-        className={`${styles.banner} text-light py-2`}
+        className="banner text-light py-2"
         style={{ backgroundColor: "#000" }}
       >
         <div className="container text-center">
