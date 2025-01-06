@@ -10,7 +10,7 @@ const SeasonSale = ({items,children}) => {
     <SectionWrapper>
       <SectionHeader>{children}</SectionHeader>
      <CarouselSliderSale>
-                <SeasonSaleCard items={items}/>
+                <SeasonSaleCard items={items} visibleItemsCount={3} withIndicator isInfinite/>
       </CarouselSliderSale>
     </SectionWrapper>
   );

@@ -47,7 +47,15 @@ import { SeasonSale } from '../Section';
       img: tShirt,
       title: 'KIDS COLLECTION',
       description: 'Save big on our best-selling kids apparel, shoes, and slides.',
-    }
+    } ,{
+      img: jacket,
+      title: 'SPORTS WEAR',
+      description: 'Elevate your active lifestyle and workouts with up to 50% off',
+    }, {
+      img: tShirt,
+      title: 'KIDS COLLECTION',
+      description: 'Save big on our best-selling kids apparel, shoes, and slides.',
+    },
   ];
   
   return(
