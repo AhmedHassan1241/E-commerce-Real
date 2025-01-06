@@ -52,7 +52,7 @@ import { SeasonSale } from '../Section';
   
   return(
     <>
-      <SeasonSale items={items}>End Of Seasoon Sale</SeasonSale>
+      <SeasonSale items={items}>End Of Season Sale</SeasonSale>
     </>
   )
 }
