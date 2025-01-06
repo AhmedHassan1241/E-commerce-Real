@@ -1,3 +1,7 @@
+#ignore 
+node_modules/
+.history/
+
 # Logs
 logs
 *.log
