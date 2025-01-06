@@ -10,7 +10,7 @@ import { SeasonSale } from '../Section';
     const items= [
     {
       img: jacket,
-      title: 'SPORTSWEAR',
+      title: 'SPORTS WEAR',
       description: 'Elevate your active lifestyle and workouts with up to 50% off',
     },
     {
@@ -47,12 +47,7 @@ import { SeasonSale } from '../Section';
       img: tShirt,
       title: 'KIDS COLLECTION',
       description: 'Save big on our best-selling kids apparel, shoes, and slides.',
-    },
-    {
-      img: tShirt,
-      title: 'KIDS COLLECTION',
-      description: 'Save big on our best-selling kids apparel, shoes, and slides.',
-    },
+    }
   ];
   
   return(

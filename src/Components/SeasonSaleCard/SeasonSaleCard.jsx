@@ -1,3 +1,4 @@
+import "./SeasonSaleCard.css"
 // eslint-disable-next-line react/prop-types
 const SeasonSaleCard = ({ items = [] }) => {
   return (
@@ -19,16 +20,17 @@ const SeasonSaleCard = ({ items = [] }) => {
             </video>
           )}
           <div className="title1 text-center mt-3 w-75 mx-auto">
-            <h6 className="fw-bolder fs-6">{item.title}</h6>
+            <h6 className="title fw-bolder fs-6">{item.title}</h6>
             <p className="fs-6 fw-lighter mb-2 text-center" style={{ minHeight:"70px"}}>
               {item.description}
             </p>
-            <a href="#ShopNow" className="text-black fs-6 fw-semibold text-decoration-none">
+            {/* <a href="#ShopNow" className="text-black fs-6 fw-semibold text-decoration-none">
               <button className="btn btn-primary">SHOP NOW</button>
-            </a>
+            </a> */}
           </div>
         </div>
       ))}
+     
     </>
   );
 };
