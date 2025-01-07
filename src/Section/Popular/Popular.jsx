@@ -11,7 +11,7 @@ const Popular = () => {
     <>
       <div
         className="popular"
-        style={{ paddingTop: "6rem", paddingBottom: "6rem" }}
+        style={{  paddingBottom: "6rem" }}
       >
         <div className="container-fluid">
           <div className="head pb-3">
