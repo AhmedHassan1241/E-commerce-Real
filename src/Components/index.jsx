@@ -13,3 +13,4 @@ export { default as FooterLink } from "./FooterLink/FooterLink";
 export { WrapperFooterLink } from "./FooterLink/FooterLink";
 export {FooterLinkeLast} from "./FooterLink/FooterLink"
 export {WrapperFooterLinkLast} from "./FooterLink/FooterLink"
+export {default as WhatsHotCard} from "./WhatsHotCard/WhatsHotCard"

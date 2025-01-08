@@ -1,19 +1,21 @@
+/* eslint-disable react/prop-types */
 
 import {  SeasonSaleCard, SectionHeader, SectionWrapper } from '../../Components';
 // import SeasonSaleData from '../../Data/SeasonSaleData';
 
-// eslint-disable-next-line react/prop-types
-const SeasonSale = ({items,children}) => {
-
+const WhatsHot = ({items,children}) => {
+  const chunkData = (chaunkSize) => {
+    return items.slice(0,chaunkSize);
+  };
 
   return (
     <SectionWrapper>
       <SectionHeader>{children}</SectionHeader>
      {/* <CarouselSliderSale> */}
-                <SeasonSaleCard items={items} />
+                <SeasonSaleCard items={chunkData(8)} />
       {/* </CarouselSliderSale> */}
     </SectionWrapper>
   );
 };
 
-export default SeasonSale;
+export default WhatsHot;

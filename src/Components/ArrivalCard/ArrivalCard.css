@@ -1,0 +1,41 @@
+.arrivalCard {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 30px 52px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .arrivalCard .slick-prev {
+    left: -4rem;
+  }
+  .arrivalCard .slick-next {
+    right: -2.5rem;
+  }
+  .arrivalCard .slick-prev,
+  .arrivalCard .slick-next {
+    /* border: 1px solid blue; */
+    z-index: 1;
+  }
+  
+  .arrivalCard .slick-prev:before,
+  .arrivalCard .slick-next:before {
+    color: #333;
+    /* background-color: blue; */
+    font-size: 2.5rem;
+  }
+  
+  @media (max-width:750px){
+    .title1{
+      height: 4rem;
+    }
+  }
+
+  @media (max-width:550px){
+    .title1{
+      height: 4.5rem;
+    }
+  }
+ 

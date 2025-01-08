@@ -15,7 +15,7 @@ const Category = ({img,name}) => {
                   className="d-flex justify-content-center  align-items-end "
                 >
                     <a href={`#${name}`}>
-                  <SecondaryButton >{name} </SecondaryButton>
+                  <SecondaryButton link={name}>{name} </SecondaryButton>
                 </a>
                 </div>
               </div> 

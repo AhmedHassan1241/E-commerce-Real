@@ -41,12 +41,23 @@ import "./SeasonSaleCard.css"
 // eslint-disable-next-line react/prop-types
 const  SeasonSaleCard=({items})=> {
   var settings = {
+    // dots: true,
+    // infinite: true,
+    // speed: 900,
+    // slidesToShow: 4,
+    // slidesToScroll: 1,
+    // initialSlide: 1,
+    // autoplay: true,
+    // autoplaySpeed: 2000,
+    // pauseOnHover: true,
     dots: true,
     infinite: true,
-    speed: 900,
     slidesToShow: 4,
     slidesToScroll: 1,
-    initialSlide: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
     responsive: [
       {
         breakpoint: 1000,
@@ -75,17 +86,18 @@ const  SeasonSaleCard=({items})=> {
   };
   return (
     <div className="seasonSaleCard slider-container">
+      <a href="#seasonSales" className="text-black">
       <Slider {...settings}>
         {
         // eslint-disable-next-line react/prop-types
         items.map((item) => (
           <div
             key={item.id}
-            className="carousel-items mx-auto border border-success-subtle border-3 py-1 text-center"
+            className="carousel-items mx-auto border border-success-subtle border-3 py-1 text-center bg-secondary-subtle"
           >
-            {item.img ? (
+            {item.image ? (
               <div className="text-center">
-                <img src={item.img} className="d-inline w-75 h-75" alt={item.title} />
+                <img src={item.image} className="d-inline w-75 h-75" alt={item.title} />
               </div>
             ) : (
               <video className="w-75 h-75" id="vd" autoPlay loop muted>
@@ -107,6 +119,7 @@ const  SeasonSaleCard=({items})=> {
           </div>
         ))}
       </Slider>
+      </a>
     </div>
   );
 }

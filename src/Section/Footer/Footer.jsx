@@ -27,7 +27,7 @@ const Footer = () => {
         <p style={{ margin: "0", fontWeight: "300" }}>BACK TO TOP</p>
       </div>
       <div
-        className="row m-0 justify-content-center align-items-center text-center bg-dark "
+        className="row m-0 justify-content-center align-items-center text-center bg-black"
         style={{ height: "35vh", columnGap: "2rem", rowGap: "0" }}
       >
         <h2 className="col-lg-5 col-md-6 m-0 p-0 " style={{ color: "#FFFFFF" }}>

@@ -15,11 +15,11 @@ const PrimaryButton = ({ children,link }) => {
   );
 };
 // eslint-disable-next-line react/prop-types
-export const SecondaryButton = ({ children }) => {
+export const SecondaryButton = ({ children,link }) => {
   return(
   <div className="btn-wrapperr mt-2">
-    <a href="#.">
-      <span className="text-dark">{children}</span>
+        <a href={`#${link}`}>
+        <span className="text-dark">{children}</span>
       <img src={arrowImg} alt="" />
     </a>
   </div>

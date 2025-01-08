@@ -1,4 +1,4 @@
-.seasonSaleCard {
+.WhatsHot {
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -8,43 +8,50 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.seasonSaleCard .slick-prev {
+.WhatsHot .slick-prev {
   left: -4rem;
 }
-.seasonSaleCard .slick-next {
+.WhatsHot .slick-next {
   right: -2.5rem;
 }
-.seasonSaleCard .slick-prev,
-.seasonSaleCard .slick-next {
+.WhatsHot .slick-prev,
+.WhatsHot .slick-next {
   /* border: 1px solid blue; */
   z-index: 2;
 }
 
-.seasonSaleCard .slick-prev:before,
-.seasonSaleCard .slick-next:before {
+.WhatsHot .slick-prev:before,
+.WhatsHot .slick-next:before {
   color: #333;
   /* background-color: blue; */
   font-size: 2.5rem;
+}
+
+@media (max-width: 997px) and (min-width:837px) {
+ 
+  .WhatsHot .carousel-items {
+    min-height: 26rem;
+  }
 }
 
 @media (max-width: 750px) {
   .title1 {
     height: 4rem;
   }
-  .seasonSaleCard .carousel-items {
-    min-height: 24rem;
+  .WhatsHot .carousel-items {
+    min-height: 22rem;
   }
 }
 @media (max-width: 700px)and (min-width:630px) {
-  .seasonSaleCard .carousel-items {
-    min-height: 26rem;
+  .WhatsHot .carousel-items {
+    min-height: 25rem;
   }
 }
 @media (max-width: 550px) {
   .title1 {
     height: 4.5rem;
   }
-  .seasonSaleCard .carousel-items {
-    min-height: 26rem;
+  .WhatsHot .carousel-items {
+    min-height: 20rem;
   }
 }

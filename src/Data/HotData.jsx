@@ -3,32 +3,32 @@ import sport02 from '../Assets/Images/sport2.jpg';
 import sport03 from '../Assets/Images/sport3.jpg';
 import sport04 from '../Assets/Images/sport4.jpg';
 
-import { SeasonSale } from '../Section';
-import { createContext } from 'react';
+import { WhatsHot } from '../Section';
+// import { createContext } from 'react';
 
   
-export const ItemsData= createContext();
+// export const dataData= createContext();
   const HotData =()=>{ 
     const video = "https://cmspreview-res.cloudinary.com/video/upload/v1716272651/MENA/tennis-SS24-roland-garros-launch-HP-teaser-card-portrait-dualgender-d_1.mp4";
-    const items= [
+    const data= [
     {
-      img: sport01,
+      image: sport01,
       title: 'For the fast',
       description: 'Meet our record-breaking running shoe family.',
     },
     {
-      img: sport02,
+      image: sport02,
       title: 'Ready for Yoga',
       description: 'Connect to your practice in mind and body with our yoga range.',
     },
     {
-      img: sport03,
-      title: 'SUPERCOMFORT. SUPERNOVA.',
+      image: sport03,
+      title: 'supercomfort supernova',
       description: 'Experience maximum comfort with the new Supernova.',
     },
     {
-      img: sport04,
-      title: 'ADIDAS FOOTBALL',
+      image: sport04,
+      title: 'adidas football',
       description: 'The Messi Player Pack, follow in the footsteps of a legend.',
     },
     {
@@ -40,7 +40,7 @@ export const ItemsData= createContext();
   
   return(
     <>
-      <SeasonSale items={items}>What's Hot</SeasonSale>
+      <WhatsHot data={data}>{`What's Hot`}</WhatsHot>
     </>
   )
 }
