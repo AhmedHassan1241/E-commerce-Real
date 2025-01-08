@@ -1,0 +1,19 @@
+.footer-link p {
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.footer-link p:hover {
+  font-weight: bolder;
+  text-shadow: 1px 1px 1px rgb(34, 238, 11);
+}
+.footer-link svg:hover {
+  font-size: 2rem !important;
+
+  text-shadow: 1px 1px 1px rgb(34, 238, 11);
+}
+
+.data-final div div a:hover {
+  color: white !important;
+  font-weight: bolder;
+}

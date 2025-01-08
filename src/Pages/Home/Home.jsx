@@ -4,7 +4,7 @@ import SeasonSaleData from "../../Data/SeasonSaleData"
 // import { Footer, Header, HomeHero, Popular, Yeezy } from "../../Section"
 // import SaleData from "./../../Data/SaleData";
 
-import { Header, HomeHero, Popular, } from "../../Section"
+import { Footer, Header, HomeHero, Popular, } from "../../Section"
 
 
 const Home = () => {
@@ -14,12 +14,13 @@ const Home = () => {
       <HomeHero/>
       <SeasonSaleData/> 
       <Popular/>
+      <SaleData/>
+      <Footer/> 
 {/*     
       <Yeezy/>
-      <SaleData/>
       <NewArrivalsData/>
       <HotData/>
-      <Footer/> */}
+      */}
     </>
   )
 }

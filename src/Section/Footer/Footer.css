@@ -2,7 +2,7 @@
     text-decoration: none;
     color: #fff;
 }
-.btn-wrapper{
+.all .btn-wrapper{
     background-color: var(--main-color-white);
     width: 220px;
     height: 50px;
@@ -13,7 +13,7 @@
     position: relative;
 }
 
- .btn-wrapper a{
+ .all .btn-wrapper a{
     color: var(--main-color-black);
     font-size: 15px;
     display: flex;
@@ -26,7 +26,7 @@
 }
 
 
- .btn-wrapper ::before{
+ .all .btn-wrapper ::before{
     content: "";
     position: absolute;
   border-bottom: 1px solid var(--main-color-white);
@@ -36,7 +36,7 @@
   left:2px;
   bottom: -4px;
 }
- .btn-wrapper::after{
+.all .btn-wrapper::after{
     content: "";
     position: absolute;
   border-top: 1px solid var(--main-color-white);
@@ -47,17 +47,17 @@
   bottom: -4px;
 }
 
- .btn-wrapper a img{
+.all .btn-wrapper a img{
    width: 23px;
 }
-.btn-wrapper:hover{
+.all .btn-wrapper:hover{
   border: 1px solid var(--main-color-white);
   background-color: var(--main-color-black);
 }
 
-.btn-wrapper:hover a{
+.all .btn-wrapper:hover a{
    color: var(--main-color-white);
 }
-.btn-wrapper:hover img{
+.all .btn-wrapper:hover img{
    color: var(--main-color-white);
 }

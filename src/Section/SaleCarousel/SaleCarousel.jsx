@@ -1,4 +1,3 @@
-import React from "react";
 import { SaleCard, SectionHeader, SectionWrapper } from "../../Components";
 const SaleCarousel = ({data01,children}) => {
  
