@@ -9,6 +9,7 @@ const WhatsHotCard = ({ data }) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 1,
+    cssEase:"cubic-bezier(0, 0, 0.27, 1.85)",
     responsive: [
       {
         breakpoint: 1000,

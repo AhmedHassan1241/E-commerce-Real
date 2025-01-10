@@ -38,6 +38,7 @@
 // export default SeasonSaleCard;
 import Slider from "react-slick";
 import "./SeasonSaleCard.css"
+import { NavLink } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 const  SeasonSaleCard=({items})=> {
   var settings = {
@@ -86,7 +87,7 @@ const  SeasonSaleCard=({items})=> {
   };
   return (
     <div className="seasonSaleCard slider-container">
-      <a href="#seasonSales" className="text-black">
+      <NavLink to="product" className="text-black">
       <Slider {...settings}>
         {
         // eslint-disable-next-line react/prop-types
@@ -119,7 +120,7 @@ const  SeasonSaleCard=({items})=> {
           </div>
         ))}
       </Slider>
-      </a>
+      </NavLink>
     </div>
   );
 }

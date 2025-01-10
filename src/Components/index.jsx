@@ -1,3 +1,4 @@
+
 export { default as NavItem } from "./NavItem/NavItem";
 export { default as Bannar } from "./Bannar/Bannar";
 export { default as SeasonSaleCard } from "./SeasonSaleCard/SeasonSaleCard";
@@ -11,6 +12,12 @@ export { default as SaleCard } from "./SaleCard/SaleCard";
 export { default as ArrivalCard } from "./ArrivalCard/ArrivalCard";
 export { default as FooterLink } from "./FooterLink/FooterLink";
 export { WrapperFooterLink } from "./FooterLink/FooterLink";
-export {FooterLinkeLast} from "./FooterLink/FooterLink"
-export {WrapperFooterLinkLast} from "./FooterLink/FooterLink"
-export {default as WhatsHotCard} from "./WhatsHotCard/WhatsHotCard"
+export { FooterLinkeLast } from "./FooterLink/FooterLink";
+export { WrapperFooterLinkLast } from "./FooterLink/FooterLink";
+export { default as WhatsHotCard } from "./WhatsHotCard/WhatsHotCard";
+export { default as AsideFilter } from "./AsideFilter/AsideFilter";
+
+export {default as ProductsList} from "./ProductsList/ProductsList";
+export {default as ScrollToTop} from "./ToTop/ToTop";
+
+export {default as ProductDetails} from "./ProductDetails/ProductDetails";

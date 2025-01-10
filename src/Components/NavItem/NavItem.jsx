@@ -5,6 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 import bagIcon from "../../assets/Images/bagIcon.svg";
 import "./NavItem.css";
+import { NavLink } from "react-router-dom";
 
 const NavItem = () => {
   // Toggle the navbar collapse
@@ -31,9 +32,9 @@ const NavItem = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <a className="navbar-brand" href="/home">
+          <NavLink className="navbar-brand" to="/">
             <img src={AdidasLogo} alt="" />
-          </a>
+          </NavLink>
           <div
             className="collapse navbar-collapse ms-1 ms-lg-0"
             id="navbarSupportedContent"

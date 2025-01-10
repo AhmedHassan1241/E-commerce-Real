@@ -1,14 +1,34 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Home from "./Pages/Home/Home";
 import "./App.css";
+import NotFound from "./Pages/NotFound/NotFound";
+import ProductPage from "./Pages/ProductPage/ProductPage";
+import ProductDetailsPage from "./Pages/ProductDetailsPage/ProductDetailsPage";
+import { ScrollToTop } from "./Components";
 
 function App() {
   return (
     <>
-      <Home />
+      <Router>
+        <ScrollToTop/>
+          {/* <Header/> */}
+        <Routes>
+          <Route basename="/">
+            <Route path="" element={<Home />} />
+            <Route path="product" element={<ProductPage/>}/>
+            <Route
+            path="Details/:productId"
+            element={<ProductDetailsPage />}
+          />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        {/* <Footer/> */}
+      </Router>
     </>
   );
 }
