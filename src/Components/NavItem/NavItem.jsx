@@ -1,5 +1,6 @@
 // import EgFly from "../../Assets/Images/eg.svg";
-import AdidasLogo from "../../Assets/Images/adidas_logo.svg";
+// import AdidasLogo from "../../Assets/Images/adidas_logo.svg";
+import logo1 from "../../assets/Images/logoo.svg"
 import { FaRegUser } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
@@ -11,7 +12,7 @@ const NavItem = () => {
   // Toggle the navbar collapse
 
   return (
-    <div className="navItem position-sticky top-0 z-2">
+    <div className="navItem position-sticky top-0 z-3">
       <nav
         className="navbar navbar-expand-lg sticky-top shadow"
         style={{ flexWrap: "wrap", backgroundColor: "white" }}
@@ -32,8 +33,8 @@ const NavItem = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <NavLink className="navbar-brand" to="/">
-            <img src={AdidasLogo} alt="" />
+          <NavLink className="navbar-brand p-0 m-0" to="/">
+            <img src={logo1} alt="" className="rounded-3" />
           </NavLink>
           <div
             className="collapse navbar-collapse ms-1 ms-lg-0"

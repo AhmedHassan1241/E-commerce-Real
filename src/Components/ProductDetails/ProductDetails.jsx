@@ -81,6 +81,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useCallback } from "react";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -89,81 +90,89 @@ const ProductDetails = () => {
   const urlApi = "https://fakestoreapi.com/products/";
 
   // Fetch product data
-  const getProduct = async () => {
+  const getProduct = useCallback(async () => {
     try {
       const response = await axios.get(`${urlApi}${productId}`);
       setProduct(response.data);
     } catch (err) {
       console.error("Error fetching product:", err);
     }
-  };
+  }, [urlApi, productId]);
 
   useEffect(() => {
     getProduct();
-  }, [productId]);
+  }, [getProduct]);
 
   // Loading state
   if (!product) {
-    return <p>Loading...</p>;
+    return (
+      <div className="d-flex justify-content-center align-items-center my-5">
+        <div>
+          <div className="ms-3 spinner-border text-primary" role="">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <p className="mt-3 text-center text-primary fw-bold">Loading...</p>
+        </div>
+      </div>
+    );
   }
 
   // Render product details
   return (
-<div className="container w-100 my-5 ">
-  <div className="card shadow-lg mx-auto pt-5" >
-    <img
-      src={product.image}
-      alt={product.title}
-      className="card-img-top img-fluid"
-      style={{ height: "15rem", objectFit: "contain" }}
-    />
-    <div className="card-body">
-      <h5 className="card-title fw-bold text-truncate">{product.title}</h5>
-      <p className="card-text">
-        <strong>Category:</strong> {product.category}
-      </p>
-      <p className="card-text text-truncate0">
-        <strong>Description:</strong> {product.description}
-      </p>
-      <p className="card-text fs-5">
-        <strong>Price:</strong>{" "}
-        <span className="text-success fw-bold">${product.price}</span>
-      </p>
+    <div className="container w-50 my-5">
+      <div className="card shadow-lg mx-auto pt-5">
+        <img
+          src={product.image}
+          alt={product.title}
+          loading="lazy"
+          className="card-img-top img-fluid"
+          style={{ height: "15rem", objectFit: "contain" }}
+        />
+        <div className="card-body">
+          <h5 className="card-title fw-bold text-truncate">{product.title}</h5>
+          <p className="card-text">
+            <strong>Category:</strong> {product.category}
+          </p>
+          <p className="card-text text-truncate0">
+            <strong>Description:</strong> {product.description}
+          </p>
+          <p className="card-text fs-5">
+            <strong>Price:</strong>{" "}
+            <span className="text-success fw-bold">${product.price}</span>
+          </p>
 
-      {/* Add to Cart Buttons */}
-      <div className="d-flex justify-content-between align-items-center mt-3">
-        {counter === 0 ? (
-            <div className="w-100 text-center">
-
-          <button
-            className="btn btn-primary w-50"
-            onClick={() => setCounter(counter + 1)}
-            >
-            Add to Cart
-          </button>
+          {/* Add to Cart Buttons */}
+          <div className="d-flex justify-content-between align-items-center mt-3">
+            {counter === 0 ? (
+              <div className="w-100 text-center">
+                <button
+                  className="btn btn-primary w-50"
+                  onClick={() => setCounter(counter + 1)}
+                >
+                  Add to Cart
+                </button>
               </div>
-        ) : (
-          <>
-            <button
-              className="btn btn-danger"
-              onClick={() => setCounter(counter - 1)}
-            >
-              Remove
-            </button>
-            <span className="fw-bold fs-4 mx-3">{counter}</span>
-            <button
-              className="btn btn-primary"
-              onClick={() => setCounter(counter + 1)}
-            >
-              Add More
-            </button>
-          </>
-        )}
+            ) : (
+              <>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => setCounter(counter - 1)}
+                >
+                  Remove
+                </button>
+                <span className="fw-bold fs-4 mx-3">{counter}</span>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => setCounter(counter + 1)}
+                >
+                  Add More
+                </button>
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
   );
 };
 
