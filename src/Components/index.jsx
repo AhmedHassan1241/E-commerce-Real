@@ -21,3 +21,4 @@ export {default as ProductsList} from "./ProductsList/ProductsList";
 export {default as ScrollToTop} from "./ToTop/ToTop";
 
 export {default as ProductDetails} from "./ProductDetails/ProductDetails";
+export {default as Cart} from './Cart/Cart'

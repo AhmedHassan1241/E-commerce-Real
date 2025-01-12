@@ -82,12 +82,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart, removeOneFromCart } from "../CartSlice/CartSlice";
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null); // Initialize as null
   const [counter, setCounter] = useState(0);
   const urlApi = "https://fakestoreapi.com/products/";
+// const cart = useSelector((state)=>state.cart.items);
+const dispatch = useDispatch();
 
   // Fetch product data
   const getProduct = useCallback(async () => {
@@ -147,7 +151,7 @@ const ProductDetails = () => {
               <div className="w-100 text-center">
                 <button
                   className="btn btn-primary w-50"
-                  onClick={() => setCounter(counter + 1)}
+                  onClick={() => {setCounter(counter + 1);dispatch(addToCart(product))}}
                 >
                   Add to Cart
                 </button>
@@ -156,14 +160,14 @@ const ProductDetails = () => {
               <>
                 <button
                   className="btn btn-danger"
-                  onClick={() => setCounter(counter - 1)}
+                  onClick={() => {setCounter(counter - 1);dispatch(removeOneFromCart(product.id))}}
                 >
                   Remove
                 </button>
                 <span className="fw-bold fs-4 mx-3">{counter}</span>
                 <button
                   className="btn btn-primary"
-                  onClick={() => setCounter(counter + 1)}
+                  onClick={() => {setCounter(counter + 1);dispatch(addToCart(product))}}
                 >
                   Add More
                 </button>

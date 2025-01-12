@@ -6,6 +6,7 @@ import { FaChevronUp } from "react-icons/fa";
 import "./Footer.css";
 import { FooterLink, FooterLinkeLast, WrapperFooterLink, WrapperFooterLinkLast } from "../../Components";
 const Footer = () => {
+  const token = localStorage.getItem("ref")
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -26,6 +27,7 @@ const Footer = () => {
         ></FaChevronUp>
         <p style={{ margin: "0", fontWeight: "300" }}>BACK TO TOP</p>
       </div>
+      { !token?(
       <div
         className="row m-0 justify-content-center align-items-center text-center bg-black"
         style={{ height: "35vh", columnGap: "2rem", rowGap: "0" }}
@@ -40,7 +42,7 @@ const Footer = () => {
             </span>
           </a>
         </div>
-      </div>
+      </div>):""}
       {/* <!-- BEFORE FOOTER --> */}
       {/* <!-- FOOTER --> */}
       <div

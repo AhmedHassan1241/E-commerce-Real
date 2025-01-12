@@ -7,10 +7,13 @@ import { MdFavoriteBorder } from "react-icons/md";
 import bagIcon from "../../assets/Images/bagIcon.svg";
 import "./NavItem.css";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavItem = () => {
   // Toggle the navbar collapse
-
+  const token = localStorage.getItem("ref");
+  const cart = useSelector((state)=>state.cart.items);
+const totalItems = cart.reduce((sum,item)=>sum + item.quantity,0)
   return (
     <div className="navItem position-sticky top-0 z-3">
       <nav
@@ -95,16 +98,21 @@ const NavItem = () => {
                 style={{ right: "35px" }}
               ></IoSearch>
             </form>
-            <a href="#User"
-              className="icons d-flex align-items-center justify-content-between pe-2 my-sm-2 my-lg-0 text-dark"
-              style={{ width: "100px" }}
+            <div
+             className="icons d-flex align-items-center justify-content-between pe-2 my-sm-2 my-lg-0 text-dark"
+             style={{ width: "100px" }}
             >
+            <NavLink to={token?"/user":"/login"}
+            title="Add to Wishlist"
+            aria-label="Add to Wishlist"
+            style={{ color: "#000" }}>
               <FaRegUser
                 style={{ fontSize: "18px", cursor: "pointer" }}
                 title="profile"
-              ></FaRegUser>
-              <a
-                href="#Favorite"
+                ></FaRegUser>
+                </NavLink>
+              <NavLink
+                to="#Favorite"
                 title="Add to Wishlist"
                 aria-label="Add to Wishlist"
                 style={{ color: "#000" }}
@@ -113,21 +121,22 @@ const NavItem = () => {
                   style={{ fontSize: "18px"}}
                   
                   ></MdFavoriteBorder>
-              </a>
+              </NavLink>
               {/* <!-- todo: --> */}
-              <a
-              href="#Cart"
+              
+              <NavLink
+              to="/cart"
                 className="bag-icon position-relative pointer-event"
                 style={{ cursor: "pointer" }}
               >
                  <span className="position-absolute translate-middle badge rounded-pill bg-danger "
                  style={{top:"5px", right: "-25px",width: "23px",height: "18px",fontSize: "11px",padding: "3px 15px 2px 2px"}}
                  >
-    +99
+    +{totalItems}
     </span>
                 <img src={bagIcon} alt="" />
-              </a>
-            </a>
+              </NavLink>
+              </div>
           </div>
         </div>
       </nav>

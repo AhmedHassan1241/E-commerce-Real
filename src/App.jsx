@@ -9,6 +9,10 @@ import NotFound from "./Pages/NotFound/NotFound";
 import ProductPage from "./Pages/ProductPage/ProductPage";
 import ProductDetailsPage from "./Pages/ProductDetailsPage/ProductDetailsPage";
 import { ScrollToTop } from "./Components";
+import CartPage from "./Pages/CartPage/CartPage";
+import RegisterPage from "./Pages/RegisterPage/RegisterPage";
+import LoginPage from './Pages/LoginPage/LoginPage';
+import UserPage from "./Pages/UserPage/UserPage";
 
 function App() {
   return (
@@ -21,10 +25,15 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="product" element={<ProductPage/>}/>
             <Route
-            path="Details/:productId"
+            path="details/:productId"
             element={<ProductDetailsPage />}
           />
           </Route>
+          <Route path="/cart" element={<CartPage/>}/>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/user" element={<UserPage />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
         {/* <Footer/> */}

@@ -10,3 +10,7 @@ export { default as NewArrivals } from "./NewArrivals/NewArrivals";
 export {default as WhatsHot} from "./WhatsHot/WhatsHot"
 
 export {default as ShowProduct} from "./ShowProduct/ShowProduct";
+
+export {default as Register} from "./Register/Register"
+export {default as Login} from "./Login/Login"
+export {default as User} from "./User/User"
