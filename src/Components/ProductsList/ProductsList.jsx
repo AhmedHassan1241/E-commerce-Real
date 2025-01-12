@@ -3,10 +3,16 @@ import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { addToCart } from "../CartSlice/CartSlice";
 import { FaRegHeart } from "react-icons/fa";
-import "./ProductList.css"
 import { FcLike } from "react-icons/fc";
+import { useState } from "react";
+import { addToFav, removeOneFromFav } from "../FavSlice/FavSlice";
 const ProductsList = ({ products }) => {
+  const [favorite, setFavorite] = useState({});
+
   const dispatch = useDispatch();
+  const handleFav = (product) => {
+    setFavorite((prev) => ({ ...prev, [product.id]: !prev[product.id] }));
+  };
   const handelAdd = (product) => {
     dispatch(addToCart(product));
   };
@@ -53,9 +59,16 @@ const ProductsList = ({ products }) => {
                     Add
                   </button>
                 </div>
-                <div className="heratHover m-2">
-                <FcLike style={{ width: "29px", height: "26px" }} />
-                  <FaRegHeart style={{ width: "29px", height: "26px" }} />
+                <div
+                  className="m-2"
+                  onClick={() => handleFav(product)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {!favorite[product.id] ? (
+                    <FaRegHeart onClick={()=>dispatch(addToFav(product))} style={{ width: "29px", height: "26px" }} />
+                  ) : (
+                    <FcLike onClick={()=>dispatch(removeOneFromFav(product.id))} style={{ width: "29px", height: "26px" }} />
+                  )}
                 </div>
               </div>
             </div>

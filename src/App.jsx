@@ -13,6 +13,7 @@ import CartPage from "./Pages/CartPage/CartPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import LoginPage from './Pages/LoginPage/LoginPage';
 import UserPage from "./Pages/UserPage/UserPage";
+import FavPage from "./Pages/FavPage/FavPage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           />
           </Route>
           <Route path="/cart" element={<CartPage/>}/>
+          <Route path="/fav" element={<FavPage/>}/>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/user" element={<UserPage />} />

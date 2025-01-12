@@ -1,6 +1,6 @@
 // import EgFly from "../../Assets/Images/eg.svg";
 // import AdidasLogo from "../../Assets/Images/adidas_logo.svg";
-import logo1 from "../../assets/Images/logoo.svg"
+import logo1 from "../../assets/Images/logoo.svg";
 import { FaRegUser } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
@@ -12,8 +12,14 @@ import { useSelector } from "react-redux";
 const NavItem = () => {
   // Toggle the navbar collapse
   const token = localStorage.getItem("ref");
-  const cart = useSelector((state)=>state.cart.items);
-const totalItems = cart.reduce((sum,item)=>sum + item.quantity,0)
+  const savedData = localStorage.getItem("formData");
+  const parsedData = JSON.parse(savedData);
+
+  
+  const cart = useSelector((state) => state.cart.items);
+  const fav = useSelector((state) => state.fav.items);
+  
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   return (
     <div className="navItem position-sticky top-0 z-3">
       <nav
@@ -45,11 +51,7 @@ const totalItems = cart.reduce((sum,item)=>sum + item.quantity,0)
           >
             <ul className="navbar-nav  mb-2 mb-lg-0 m-auto">
               <li className="nav-item">
-                <a
-                  className="nav-link active"
-                  aria-current="page"
-                  href="#MEN"
-                >
+                <a className="nav-link active" aria-current="page" href="#MEN">
                   MEN
                 </a>
               </li>
@@ -99,44 +101,76 @@ const totalItems = cart.reduce((sum,item)=>sum + item.quantity,0)
               ></IoSearch>
             </form>
             <div
-             className="icons d-flex align-items-center justify-content-between pe-2 my-sm-2 my-lg-0 text-dark"
-             style={{ width: "100px" }}
+              className="icons d-flex align-items-center justify-content-between pe-2 my-sm-2 my-lg-0 text-dark"
+              style={{ width: "155px" }}
             >
-            <NavLink to={token?"/user":"/login"}
-            title="Add to Wishlist"
-            aria-label="Add to Wishlist"
-            style={{ color: "#000" }}>
-              <FaRegUser
-                style={{ fontSize: "18px", cursor: "pointer" }}
-                title="profile"
-                ></FaRegUser>
-                </NavLink>
               <NavLink
-                to="#Favorite"
-                title="Add to Wishlist"
+                to={token ? "/user" : "/login"}
+                title="User Name"
+                aria-label="Add to Wishlist"
+                style={{ color: "#000" }}
+              >
+                <div className="d-flex align-content-center">
+
+                <FaRegUser
+                  style={{ fontSize: "24px", cursor: "pointer" }}
+                  title="profile"
+                  >
+                </FaRegUser>
+                {!token?(
+                <div className="fw-bold">Login</div>):(<div className="fw-bold">{parsedData.name.split(" ")[0]}</div>)
+                }
+                  </div>
+              </NavLink>
+              <NavLink
+                to="/fav"
+                title="Favorite Items"
+                className="fav-icon position-relative pointer-event"
                 aria-label="Add to Wishlist"
                 style={{ color: "#000" }}
               >
                 <MdFavoriteBorder
-                  style={{ fontSize: "18px"}}
-                  
-                  ></MdFavoriteBorder>
+                  style={{ fontSize: "24px" }}
+                ></MdFavoriteBorder>
+                 <span
+                  className="position-absolute translate-middle badge rounded-pill bg-danger "
+                  style={{
+                    top: "5px",
+                    right: "-25px",
+                    width: "23px",
+                    height: "18px",
+                    fontSize: "11px",
+                    padding: "3px 15px 2px 2px",
+                  }}
+                >
+                  +{fav.length}
+                </span>
               </NavLink>
               {/* <!-- todo: --> */}
-              
+
               <NavLink
-              to="/cart"
+                to="/cart"
+                title="Cart Items"
+
                 className="bag-icon position-relative pointer-event"
                 style={{ cursor: "pointer" }}
               >
-                 <span className="position-absolute translate-middle badge rounded-pill bg-danger "
-                 style={{top:"5px", right: "-25px",width: "23px",height: "18px",fontSize: "11px",padding: "3px 15px 2px 2px"}}
-                 >
-    +{totalItems}
-    </span>
-                <img src={bagIcon} alt="" />
+                <span
+                  className="position-absolute translate-middle badge rounded-pill bg-danger "
+                  style={{
+                    top: "5px",
+                    right: "-25px",
+                    width: "23px",
+                    height: "18px",
+                    fontSize: "11px",
+                    padding: "3px 15px 2px 2px",
+                  }}
+                >
+                  +{totalItems}
+                </span>
+                <img src={bagIcon} style={{height:"22px",width: "22px"}} alt="" />
               </NavLink>
-              </div>
+            </div>
           </div>
         </div>
       </nav>

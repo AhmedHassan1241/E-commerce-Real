@@ -5,7 +5,7 @@ import {
   removeOneFromCart,
 } from "../CartSlice/CartSlice";
 import { useEffect, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const navigator = useNavigate();
@@ -35,7 +35,6 @@ const Cart = () => {
           padding: "20px",
         }}
       >
-        {/* Cart */}
         <div>
           {cart.length === 0 ? (
         <p className="text-center text-muted my-5">No items in cart.</p>
@@ -95,9 +94,9 @@ const Cart = () => {
             <h6 className="card-text text-start"><span className="fw-bold">Items : </span>{total.price.toFixed(2)} $</h6>
             <h6 className="card-text text-start"><span className="fw-bold">Shipping & handling :  </span> 20 $</h6>
             <h6 className="card-text border my-3 fw-bold bg-body-tertiary rounded p-2">Total Price : {(total.price + 20).toFixed(2)} $</h6>
-            <a href="#" className="btn btn-warning mt-4">
+            <NavLink to="#" className="btn btn-warning mt-4">
               Proceed To Buy ({total.quantity}) Items
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
