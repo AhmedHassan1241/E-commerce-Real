@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
-//   const [tokenData, setTokenData] = useState({});
+  //   const [tokenData, setTokenData] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -19,10 +19,18 @@ const Login = () => {
         "https://tarmeezacademy.com/api/v1/login",
         formData
       );
-      
+
+      // to save token & expiration time
+      const saveToken = (token) => {
+        const expirationTime = new Date().getTime() +  43200000; // 12 hours from now
+        // localStorage.setItem("token", token);
+        localStorage.setItem("tokenExpiry", expirationTime);
+      };
       const token = response.data.token;
-      localStorage.setItem("ref", token);
-      localStorage.setItem("formData",JSON.stringify(response.data.user))
+      console.log(token);
+      
+      saveToken(token)
+      localStorage.setItem("formData", JSON.stringify(response.data.user));
       Swal.fire({
         icon: "success", // Icon for success
         title: "Login successful!",
@@ -31,7 +39,7 @@ const Login = () => {
         timer: 2000,
         timerProgressBar: true,
       });
-    //   getUserFromToken();
+      //   getUserFromToken();
       navigate("/"); // Redirect to a protected route
     } catch (error) {
       console.error("Error response:", error.response?.data);

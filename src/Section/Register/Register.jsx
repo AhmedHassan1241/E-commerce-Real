@@ -34,6 +34,7 @@ const Register = () => {
         data,
         {
           headers: {
+            // for send files like:image 
             "Content-Type": "multipart/form-data",
           },
         }

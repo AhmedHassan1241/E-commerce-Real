@@ -11,14 +11,13 @@ import { useSelector } from "react-redux";
 
 const NavItem = () => {
   // Toggle the navbar collapse
-  const token = localStorage.getItem("ref");
+  const tokenExpiry = localStorage.getItem("tokenExpiry");
   const savedData = localStorage.getItem("formData");
   const parsedData = JSON.parse(savedData);
 
-  
   const cart = useSelector((state) => state.cart.items);
   const fav = useSelector((state) => state.fav.items);
-  
+
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   return (
     <div className="navItem position-sticky top-0 z-3">
@@ -101,26 +100,52 @@ const NavItem = () => {
               ></IoSearch>
             </form>
             <div
-              className="icons d-flex align-items-center justify-content-between pe-2 my-sm-2 my-lg-0 text-dark"
-              style={{ width: "155px" }}
+              className="icons d-flex align-items-center justify-content-between pe-2 my-sm-2 my-lg-0"
+              style={{ width: "160px" }}
             >
               <NavLink
-                to={token ? "/user" : "/login"}
-                title="User Name"
+                to={tokenExpiry ? "/user" : "/login"}
+                title="User"
                 aria-label="Add to Wishlist"
                 style={{ color: "#000" }}
               >
-                <div className="d-flex align-content-center">
-
-                <FaRegUser
-                  style={{ fontSize: "24px", cursor: "pointer" }}
-                  title="profile"
-                  >
-                </FaRegUser>
-                {!token?(
-                <div className="fw-bold">Login</div>):(<div className="fw-bold">{parsedData.name.split(" ")[0]}</div>)
-                }
-                  </div>
+                <div className="d-flex align-content-center ">
+                  {tokenExpiry && parsedData.profile_image.length > 0 ? (
+                    <img
+                      src={parsedData.profile_image}
+                      width={26}
+                      height={27}
+                      className="rounded-5"
+                      title="Image Profile"
+                      alt="image profile"
+                    />
+                  ) : (
+                    <FaRegUser
+                      style={{ fontSize: "24px", cursor: "pointer" }}
+                      title="profile"
+                    ></FaRegUser>
+                  )}
+                  {!tokenExpiry ? (
+                    <div
+                      className="fw-bold"
+                      style={{ padding: "3px 0 0 1px", color: "blue" }}
+                    >
+                      Login
+                    </div>
+                  ) : (
+                    <div
+                      className="fw-bold text-truncate"
+                      title="User Name"
+                      style={{ padding: "3px 0 0 1px", color: "blue" }}
+                    >
+                      {parsedData.name
+                        .split(" ")[0]
+                        .split("")
+                        .slice(0, 5)
+                        .join("")}
+                    </div>
+                  )}
+                </div>
               </NavLink>
               <NavLink
                 to="/fav"
@@ -132,7 +157,7 @@ const NavItem = () => {
                 <MdFavoriteBorder
                   style={{ fontSize: "24px" }}
                 ></MdFavoriteBorder>
-                 <span
+                <span
                   className="position-absolute translate-middle badge rounded-pill bg-danger "
                   style={{
                     top: "5px",
@@ -151,7 +176,6 @@ const NavItem = () => {
               <NavLink
                 to="/cart"
                 title="Cart Items"
-
                 className="bag-icon position-relative pointer-event"
                 style={{ cursor: "pointer" }}
               >
@@ -168,7 +192,11 @@ const NavItem = () => {
                 >
                   +{totalItems}
                 </span>
-                <img src={bagIcon} style={{height:"22px",width: "22px"}} alt="" />
+                <img
+                  src={bagIcon}
+                  style={{ height: "22px", width: "22px" }}
+                  alt=""
+                />
               </NavLink>
             </div>
           </div>

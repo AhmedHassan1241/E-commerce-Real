@@ -1,30 +1,30 @@
-import { useEffect, useState } from "react";
+// import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import MyAccount, { EditProfile, Favorite, Orders } from "./UserLeftSection";
+import { useEffect, useState } from "react";
 const User = () => {
-  const token = localStorage.getItem("ref");
+  const tokenExpiry = localStorage.getItem("tokenExpiry");
   const savedData = localStorage.getItem("formData");
   const parsedData = JSON.parse(savedData);
 
   const navigate = useNavigate();
-
+  
   useEffect(() => {
-    if (!token) {
+    if (!tokenExpiry) {
       Swal.fire({
         icon: "warning",
         title: "Not Logined In!",
-        text: "You are not logged in! Redirecting to Register.",
+        text: "You are not logged in! Redirecting to Login.",
         confirmButtonText: "OK",
-        timer: 3000,
+        timer:4000,
         timerProgressBar: true,
       });
-      navigate("/register");
-    }
-  }, [token, navigate]);
+      navigate("/login");
+  }},[tokenExpiry, navigate]);
 
   const handleLogout = () => {
-    sessionStorage.clear()
+    sessionStorage.clear();
     localStorage.clear();
 
     Swal.fire({
@@ -32,15 +32,17 @@ const User = () => {
       title: "Logged out!",
       text: "You have been successfully logged out.",
       confirmButtonText: "OK",
-      timer: 2000,
+      timer: 3000,
       timerProgressBar: true,
     });
 
     navigate("/");
-    window.location.reload();
-
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   };
   const [activeSection, setActiveSection] = useState("myAccount"); // Default active section
+
 
   const renderSectionContent = () => {
     switch (activeSection) {
@@ -59,13 +61,15 @@ const User = () => {
   return (
     <div className="container my-5 text-center">
       <h2 className="fw-bold mb-4">Welcome {parsedData.name}</h2>
-      {token ? (
+      {tokenExpiry ? (
         <div className="row border rounded shadow p-3">
           {/* Left Section */}
           <div className="col-md-3 col-sm-12 border-end py-3">
             <div
               className={`list-group-item list-group-item-action py-2 ${
-                activeSection === "myAccount" ? "bg-primary text-light rounded-2 fw-bold" : ""
+                activeSection === "myAccount"
+                  ? "bg-primary text-light rounded-2 fw-bold"
+                  : ""
               }`}
               onClick={() => setActiveSection("myAccount")}
               style={{ cursor: "pointer" }}
@@ -74,7 +78,9 @@ const User = () => {
             </div>
             <div
               className={`list-group-item list-group-item-action py-2 ${
-                activeSection === "orders" ? "bg-primary text-light rounded-2 fw-bold" : ""
+                activeSection === "orders"
+                  ? "bg-primary text-light rounded-2 fw-bold"
+                  : ""
               }`}
               onClick={() => setActiveSection("orders")}
               style={{ cursor: "pointer" }}
@@ -83,7 +89,9 @@ const User = () => {
             </div>
             <div
               className={`list-group-item list-group-item-action py-2 ${
-                activeSection === "favorite" ? "bg-primary text-light rounded-2 fw-bold" : ""
+                activeSection === "favorite"
+                  ? "bg-primary text-light rounded-2 fw-bold"
+                  : ""
               }`}
               onClick={() => setActiveSection("favorite")}
               style={{ cursor: "pointer" }}
@@ -109,7 +117,7 @@ const User = () => {
               Logout
             </div>
           </div>
-  
+
           {/* Right Section */}
           <div className="col-md-9 col-sm-12 text-center py-3">
             <div className="card shadow p-3">
@@ -122,7 +130,6 @@ const User = () => {
       )}
     </div>
   );
-  
 };
 
 export default User;

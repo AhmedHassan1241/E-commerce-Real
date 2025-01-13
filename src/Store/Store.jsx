@@ -9,10 +9,14 @@ import persistStore from "redux-persist/es/persistStore";
 
 const persistConfig = {
     key: "root", 
-    storage,   
+    storage, 
+    blacklist: ['auth'], // Exclude 'auth' from being persisted
+  
   };
   const persistedCartReducer = persistReducer(persistConfig, cartReducer);
   const persistedFavReducer = persistReducer(persistConfig, favReducer);
+const jwtToken = localStorage.getItem("jwt_webmarker")
+  document.cookie = `token=${jwtToken}; path=/; secure; HttpOnly; SameSite=Strict`;
 
 const store = configureStore({
   reducer: {

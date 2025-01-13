@@ -8,7 +8,7 @@ import "./App.css";
 import NotFound from "./Pages/NotFound/NotFound";
 import ProductPage from "./Pages/ProductPage/ProductPage";
 import ProductDetailsPage from "./Pages/ProductDetailsPage/ProductDetailsPage";
-import { ScrollToTop } from "./Components";
+import { ScrollToTop, TokenHandler } from "./Components";
 import CartPage from "./Pages/CartPage/CartPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import LoginPage from './Pages/LoginPage/LoginPage';
@@ -18,9 +18,11 @@ import FavPage from "./Pages/FavPage/FavPage";
 function App() {
   return (
     <>
+
       <Router>
         <ScrollToTop/>
           {/* <Header/> */}
+          <TokenHandler/>
         <Routes>
           <Route basename="/">
             <Route path="" element={<Home />} />
@@ -40,6 +42,7 @@ function App() {
         </Routes>
         {/* <Footer/> */}
       </Router>
+      {/* </AuthProvider> */}
     </>
   );
 }
