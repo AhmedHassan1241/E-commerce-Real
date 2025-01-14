@@ -32,45 +32,44 @@ const Fav = () => {
                 </p>
               ) : (
                 <ul className="list-group">
-                  {fav.map((item) => (
-                    <li
-                      key={item.id}
-                      className="list-group-item d-flex justify-content-between align-items-center mb-2"
-                    >
-                      <div>
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          loading="lazy"
-                          className="card-img-top img-fluid"
-                          style={{ height: "5rem", objectFit: "contain" }}
-                        />{" "}
-                      </div>
-                      <div className="me-5 text-truncate">
-                        <strong>{item.name || item.title}</strong> -{" "}
-                        {item.price} $
-                      </div>
-                      <div>
-                        <button
-                          className="btn btn-sm btn-outline-primary"
-                          onClick={() => {
-                            dispatch(addToCart(item)),
-                              dispatch(removeOneFromFav(item.id));
-                          }}
-                          style={{ marginRight: "5px" }}
-                        >
-                          Add To Cart
-                        </button>
-                        <button
-                          className="btn btn-sm btn-danger"
-                          onClick={() => dispatch(removeOneFromFav(item.id))}
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+            {fav.map((item) => (
+              <li
+                key={item.id}
+                className="list-group-item d-flex justify-content-between align-items-center mb-2 flex-wrap"
+              >
+                <div>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    className="card-img-top img-fluid"
+                    style={{ height: "5rem", objectFit: "contain" }}
+                  />{" "}
+                </div>
+                <div className="me-2">
+                  <strong>{item.name || item.title}</strong> - {item.price} $
+                </div>
+                <div className="btn-group" role="group" aria-label="Favorite Actions">
+  <button
+    className="btn btn-sm btn-outline-primary"
+    onClick={() => {
+      dispatch(addToCart(item));
+      dispatch(removeOneFromFav(item.id));
+    }}
+  >
+    Add To Cart
+  </button>
+  <button
+    className="btn btn-sm btn-danger"
+    onClick={() => dispatch(removeOneFromFav(item.id))}
+  >
+    Remove
+  </button>
+</div>
+
+              </li>
+            ))}
+          </ul>
               )}
             </div>
           </div>

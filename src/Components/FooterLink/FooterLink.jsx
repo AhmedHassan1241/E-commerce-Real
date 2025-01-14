@@ -45,7 +45,7 @@ export const FooterLinkeLast = ({ href, children,borderRight }) => {
 export const WrapperFooterLinkLast = ({children }) => {
   return (
     <>
-      <div className="mt-md-2 pt-md-2 pb-md-2">
+      <div className="d-flex justify-content-center mt-md-2 pt-md-2 pb-md-2">
             <div className="data-final col-md-12 col-xl-8 m-md-auto">
               <div
                 className="row g-0 w-75 m-md-auto"

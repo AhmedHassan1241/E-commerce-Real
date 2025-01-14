@@ -43,16 +43,22 @@ const User = () => {
       window.location.reload();
     }, 3000);
   };
-  const [activeSection, setActiveSection] = useState("myAccount"); // Default active section
+  const [activeSection, setActiveSection] = useState(
+        localStorage.getItem("activeSection") || "myAccount"); // Default active section
 
+        const handleSectionChange = (section) => {
+          setActiveSection(section);
+          localStorage.setItem("activeSection", section);
+          navigate(section)
+        };
 
   const renderSectionContent = () => {
     switch (activeSection) {
       case "myAccount":
         return <MyAccount />;
-      case "orders":
+      case "myOrders":
         return <Orders />;
-      case "favorite":
+      case "myFavorite":
         return <Favorite />;
       case "editProfile":
         return <EditProfile />;
@@ -73,29 +79,29 @@ const User = () => {
                   ? "bg-primary text-light rounded-2 fw-bold"
                   : ""
               }`}
-              onClick={() => setActiveSection("myAccount")}
+              onClick={() => handleSectionChange("myAccount")}
               style={{ cursor: "pointer" }}
             >
               My Account
             </div>
             <div
               className={`list-group-item list-group-item-action py-2 ${
-                activeSection === "orders"
+                activeSection === "myOrders"
                   ? "bg-primary text-light rounded-2 fw-bold"
                   : ""
               }`}
-              onClick={() => setActiveSection("orders")}
+              onClick={() => handleSectionChange("myOrders")}
               style={{ cursor: "pointer" }}
             >
               Orders
             </div>
             <div
               className={`list-group-item list-group-item-action py-2 ${
-                activeSection === "favorite"
+                activeSection === "myFavorite"
                   ? "bg-primary text-light rounded-2 fw-bold"
                   : ""
               }`}
-              onClick={() => setActiveSection("favorite")}
+              onClick={() => handleSectionChange("myFavorite")}
               style={{ cursor: "pointer" }}
             >
               Favorite
@@ -106,7 +112,7 @@ const User = () => {
                   ? "bg-primary text-light rounded-2 fw-bold"
                   : ""
               }`}
-              onClick={() => setActiveSection("editProfile")}
+              onClick={() => handleSectionChange("editProfile")}
               style={{ cursor: "pointer" }}
             >
               Edit Profile

@@ -1,3 +1,8 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { removeOneFromFav } from "../../Components/FavSlice/FavSlice";
+import { addToCart } from "../../Components/CartSlice/CartSlice";
+
 const MyAccount = () => {
   const tokenExpiry = localStorage.getItem("tokenExpiry");
   const savedData = localStorage.getItem("formData");
@@ -91,11 +96,131 @@ const MyAccount = () => {
 export default MyAccount;
 
 export const Orders = () => {
-  return <>Orders Content</>;
+  // const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+  const cartItems = useSelector((state) => state.cart.items);
+  const navigate = useNavigate();
+
+  return (
+    <>
+      <div className="container">
+        <h5
+          className="mb-4 fw-bold"
+          style={{ textShadow: "1px 1px 1px rgb(24, 102, 218)" }}
+        >
+          Your Orders
+        </h5>
+        <hr/>
+
+        {cartItems.length === 0 ? (
+          <div className="alert alert-warning text-center" role="alert">
+            <p>No orders found. Start shopping now!</p>
+            <button
+              className="w-50 btn btn-primary mt-3"
+              onClick={() => navigate("/")}
+            >
+              Shop Now
+            </button>
+          </div>
+        ) : (
+          <ul className="list-group">
+            {cartItems.map((item) => (
+              <li
+                key={item.id}
+                className="list-group-item d-flex justify-content-between align-items-center mb-2"
+              >
+                <div>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    className="card-img-top img-fluid"
+                    style={{ height: "5rem", objectFit: "contain" }}
+                  />{" "}
+                </div>
+                <div className="me-5 text-truncate">
+                  <strong>{item.name || item.title}</strong> - {item.price} $
+                </div>
+                <div>
+                  <span className="mx-1 fw-bold">{item.quantity}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </>
+  );
 };
 
 export const Favorite = () => {
-  return <>Favorite Content</>;
+  const favItems = useSelector((state) => state.fav.items);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <div className="container">
+        <h5
+          className="mb-4 fw-bold"
+          style={{ textShadow: "1px 1px 1px rgb(24, 102, 218)" }}
+        >
+          Your Favorite Items
+        </h5>
+        <hr/>
+        {favItems.length === 0 ? (
+          <div className="alert alert-warning text-center" role="alert">
+            <p>No Favorite Items found. Find now!</p>
+            <button
+              className="w-50 btn btn-primary mt-3"
+              onClick={() => navigate("/")}
+            >
+              Find Now
+            </button>
+          </div>
+        ) : (
+          <ul className="list-group">
+            {favItems.map((item) => (
+              <li
+                key={item.id}
+                className="list-group-item d-flex justify-content-between align-items-center mb-2 flex-wrap"
+              >
+                <div>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    className="card-img-top img-fluid"
+                    style={{ height: "5rem", objectFit: "contain" }}
+                  />{" "}
+                </div>
+                <div className="me-2">
+                  <strong>{item.name || item.title}</strong> - {item.price} $
+                </div>
+                <div className="btn-group" role="group" aria-label="Favorite Actions">
+  <button
+    className="btn btn-sm btn-outline-primary"
+    onClick={() => {
+      dispatch(addToCart(item));
+      dispatch(removeOneFromFav(item.id));
+    }}
+  >
+    Add To Cart
+  </button>
+  <button
+    className="btn btn-sm btn-danger"
+    onClick={() => dispatch(removeOneFromFav(item.id))}
+  >
+    Remove
+  </button>
+</div>
+
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </>
+  );
 };
 export const EditProfile = () => {
   return <>EditProfile Content</>;

@@ -160,6 +160,7 @@ const handleLogout = () => {
                     className="btn btn-sm btn-outline-danger ms-1 "
                     onClick={handleLogout}
                     >
+
                       LogOut
                     </button>
                   )}

@@ -24,9 +24,9 @@ const favSlice = createSlice({
       );
      
     },
-    removeAllFromFav: (state, action) => {
-      state.items = state.items.filter((item) => item.id !== action.payload);
-    },
+    // removeAllFromFav: (state, action) => {
+    //   state.items = state.items.filter((item) => item.id !== action.payload);
+    // },
   },
 });
 

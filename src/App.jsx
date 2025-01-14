@@ -11,32 +11,34 @@ import ProductDetailsPage from "./Pages/ProductDetailsPage/ProductDetailsPage";
 import { ScrollToTop, TokenHandler } from "./Components";
 import CartPage from "./Pages/CartPage/CartPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
-import LoginPage from './Pages/LoginPage/LoginPage';
+import LoginPage from "./Pages/LoginPage/LoginPage";
 import UserPage from "./Pages/UserPage/UserPage";
 import FavPage from "./Pages/FavPage/FavPage";
+import MyAccount,{ EditProfile, Favorite, Orders } from "./Section/User/UserLeftSection";
 
 function App() {
   return (
     <>
-
       <Router>
-        <ScrollToTop/>
-          {/* <Header/> */}
-          <TokenHandler/>
+        <ScrollToTop />
+        {/* <Header/> */}
+        <TokenHandler />
         <Routes>
           <Route basename="/">
             <Route path="" element={<Home />} />
-            <Route path="product" element={<ProductPage/>}/>
-            <Route
-            path="details/:productId"
-            element={<ProductDetailsPage />}
-          />
+            <Route path="product" element={<ProductPage />} />
+            <Route path="details/:productId" element={<ProductDetailsPage />} />
           </Route>
-          <Route path="/cart" element={<CartPage/>}/>
-          <Route path="/fav" element={<FavPage/>}/>
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/fav" element={<FavPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/user" element={<UserPage />} />
+          <Route path="/user" element={<UserPage />}>
+            <Route path="myAccount" element={<MyAccount />} />
+            <Route path="myOrders" element={<Orders />} />
+            <Route path="myFavorite" element={<Favorite />} />
+            <Route path="editProfile" element={<EditProfile />} />
+          </Route>
 
           <Route path="*" element={<NotFound />} />
         </Routes>
