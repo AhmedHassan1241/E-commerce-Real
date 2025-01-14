@@ -32,7 +32,7 @@ export const FooterLinkeLast = ({ href, children,borderRight }) => {
   return (
     <>
       <div
-        className={`col-3 text-center border-end ${borderRight}-dark-subtle`}
+        className={`col-3 text-center border-${borderRight} border-dark-subtle`}
       >
         <a href={href} style={{ color: "#666" }}>
           {children}

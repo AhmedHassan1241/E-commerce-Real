@@ -1,15 +1,32 @@
-// import EgFly from "../../Assets/Images/eg.svg";
-// import AdidasLogo from "../../Assets/Images/adidas_logo.svg";
 import logo1 from "../../assets/Images/logoo.svg";
 import { FaRegUser } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 import bagIcon from "../../assets/Images/bagIcon.svg";
 import "./NavItem.css";
-import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import Swal from "sweetalert2";
+import Cookies from "js-cookie"
+import { NavLink } from "react-router-dom";
 const NavItem = () => {
+
+const handleLogout = () => {
+    sessionStorage.clear();
+    Cookies.remove("token");
+    localStorage.clear();
+    Swal.fire({
+      icon: "success",
+      title: "Logged out!",
+      text: "You have been successfully logged out.",
+      confirmButtonText: "OK",
+      timer: 3000,
+      timerProgressBar: true,
+    });
+    setTimeout(() => {
+      window.location.href = "/";
+      
+    }, 3000);
+  };
   // Toggle the navbar collapse
   const tokenExpiry = localStorage.getItem("tokenExpiry");
   const savedData = localStorage.getItem("formData");
@@ -101,52 +118,53 @@ const NavItem = () => {
             </form>
             <div
               className="icons d-flex align-items-center justify-content-between pe-2 my-sm-2 my-lg-0"
-              style={{ width: "160px" }}
+              style={{ width: "175px" }}
             >
               <NavLink
                 to={tokenExpiry ? "/user" : "/login"}
                 title="User"
-                aria-label="Add to Wishlist"
-                style={{ color: "#000" }}
+                aria-label="User"
+                style={{ color: "#000",textDecoration:"none" }}
               >
-                <div className="d-flex align-content-center ">
-                  {tokenExpiry && parsedData.profile_image.length > 0 ? (
+                <div className="d-flex align-content-center" 
+                >
+                  {tokenExpiry? (parsedData.profile_image.length > 0 ?(
                     <img
                       src={parsedData.profile_image}
                       width={26}
                       height={27}
                       className="rounded-5"
-                      title="Image Profile"
+                      title="Profile"
                       alt="image profile"
+                      style={{marginTop: "2px"}}
                     />
                   ) : (
-                    <FaRegUser
-                      style={{ fontSize: "24px", cursor: "pointer" }}
+                       <FaRegUser
+                      style={{ fontSize: "24px", cursor: "pointer",    marginTop: "4px" }}
                       title="profile"
                     ></FaRegUser>
-                  )}
+                  )):("")}
+
                   {!tokenExpiry ? (
-                    <div
-                      className="fw-bold"
-                      style={{ padding: "3px 0 0 1px", color: "blue" }}
+                    <button
+                      className="btn btn-sm btn-outline-primary d-flex "
                     >
+                      <FaRegUser
+                      style={{ fontSize: "16px", cursor: "pointer",margin:"2px 2px 0 0" }}
+                      title="profile"
+                    ></FaRegUser>
                       Login
-                    </div>
+                    </button>
                   ) : (
-                    <div
-                      className="fw-bold text-truncate"
-                      title="User Name"
-                      style={{ padding: "3px 0 0 1px", color: "blue" }}
+                    <button
+                    className="btn btn-sm btn-outline-danger ms-1 "
+                    onClick={handleLogout}
                     >
-                      {parsedData.name
-                        .split(" ")[0]
-                        .split("")
-                        .slice(0, 5)
-                        .join("")}
-                    </div>
+                      LogOut
+                    </button>
                   )}
                 </div>
-              </NavLink>
+                  </NavLink>
               <NavLink
                 to="/fav"
                 title="Favorite Items"

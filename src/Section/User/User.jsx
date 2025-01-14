@@ -1,8 +1,9 @@
-// import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import MyAccount, { EditProfile, Favorite, Orders } from "./UserLeftSection";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie"
+
 const User = () => {
   const tokenExpiry = localStorage.getItem("tokenExpiry");
   const savedData = localStorage.getItem("formData");
@@ -25,6 +26,7 @@ const User = () => {
 
   const handleLogout = () => {
     sessionStorage.clear();
+    Cookies.remove("token");
     localStorage.clear();
 
     Swal.fire({

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import Cookies from "js-cookie"
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   //   const [tokenData, setTokenData] = useState({});
@@ -23,12 +23,10 @@ const Login = () => {
       // to save token & expiration time
       const saveToken = (token) => {
         const expirationTime = new Date().getTime() +  43200000; // 12 hours from now
-        // localStorage.setItem("token", token);
+        Cookies.set("token",token,{expires:1,secure:true,sameSite:"Strict"}); //save token in Cookies
         localStorage.setItem("tokenExpiry", expirationTime);
       };
-      const token = response.data.token;
-      console.log(token);
-      
+      const token= response.data.token;
       saveToken(token)
       localStorage.setItem("formData", JSON.stringify(response.data.user));
       Swal.fire({
@@ -39,7 +37,6 @@ const Login = () => {
         timer: 2000,
         timerProgressBar: true,
       });
-      //   getUserFromToken();
       navigate("/"); // Redirect to a protected route
     } catch (error) {
       console.error("Error response:", error.response?.data);

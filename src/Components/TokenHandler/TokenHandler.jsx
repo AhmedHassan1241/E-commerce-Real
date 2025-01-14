@@ -48,6 +48,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Cookies from "js-cookie"
+
 
 const TokenHandler = () => {
   const navigate = useNavigate();
@@ -60,6 +62,7 @@ const TokenHandler = () => {
 
   const handleLogout = () => {
     sessionStorage.clear();
+    Cookies.remove("token")
     localStorage.clear();
     Swal.fire({
       icon: "warning",
@@ -81,15 +84,11 @@ const TokenHandler = () => {
         handleLogout();
       }
     };
-    // window.addEventListener("beforeunload", () => {
-    //     sessionStorage.clear();
-    //     localStorage.clear();
-    //   });
-      
+
     const tokenExpiry = localStorage.getItem("tokenExpiry");
     if (tokenExpiry) {
-        console.log(tokenExpiry);
-        console.log(new Date().getTime());
+        // console.log(tokenExpiry);
+        // console.log(new Date().getTime());
         
         
       const timeUntilExpiry = tokenExpiry - new Date().getTime();

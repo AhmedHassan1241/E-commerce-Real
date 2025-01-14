@@ -112,13 +112,13 @@ const Footer = () => {
           </div>
 
           <WrapperFooterLinkLast>
-            <FooterLinkeLast href="#" borderRight="border">
+            <FooterLinkeLast href="#" borderRight="end">
               Data Settings
             </FooterLinkeLast>
-            <FooterLinkeLast href="#" borderRight="border">
+            <FooterLinkeLast href="#" borderRight="end">
               Cookie Settings
             </FooterLinkeLast>
-            <FooterLinkeLast href="#" borderRight="border">
+            <FooterLinkeLast href="#" borderRight="end">
               Privacy Policy
             </FooterLinkeLast>
             <FooterLinkeLast href="#">Terms And Conditions</FooterLinkeLast>
