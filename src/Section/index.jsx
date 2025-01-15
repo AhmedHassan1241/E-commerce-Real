@@ -14,3 +14,4 @@ export {default as ShowProduct} from "./ShowProduct/ShowProduct";
 export {default as Register} from "./Register/Register"
 export {default as Login} from "./Login/Login"
 export {default as User} from "./User/User"
+export {default as PaymenMethod} from "./PaymentMethod/PaymentMethod"

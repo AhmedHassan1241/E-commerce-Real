@@ -14,7 +14,12 @@ import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import UserPage from "./Pages/UserPage/UserPage";
 import FavPage from "./Pages/FavPage/FavPage";
-import MyAccount,{ EditProfile, Favorite, Orders } from "./Section/User/UserLeftSection";
+import MyAccount, {
+  EditProfile,
+  Favorite,
+  Orders,
+} from "./Section/User/UserLeftSection";
+import { PaymenMethod } from "./Section";
 
 function App() {
   return (
@@ -29,10 +34,16 @@ function App() {
             <Route path="product" element={<ProductPage />} />
             <Route path="details/:productId" element={<ProductDetailsPage />} />
           </Route>
-          <Route path="/cart" element={<CartPage />} />
+          {/* Cart Page */}
+          
+          <Route path="/cart" element={<CartPage />}>
+          <Route path="payment" element={<PaymenMethod/>} />
+          </Route>
           <Route path="/fav" element={<FavPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          
+          {/* user Page */}
           <Route path="/user" element={<UserPage />}>
             <Route path="myAccount" element={<MyAccount />} />
             <Route path="myOrders" element={<Orders />} />

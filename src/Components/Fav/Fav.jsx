@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../CartSlice/CartSlice";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { removeOneFromFav } from "../FavSlice/FavSlice";
 import { useEffect } from "react";
 
@@ -25,51 +25,60 @@ const Fav = () => {
             }}
           >
             {/* Cart */}
-            <div>
+            <div className="w-75">
               {fav.length === 0 ? (
-                <p className="text-center text-muted my-5">
-                  No items in favorite.
-                </p>
+                <div className="text-center alert alert-warning" role="alert">
+                  <p className="text-muted my-5">
+                    No items in favorite.
+                    <NavLink className="ms-2" to="/">
+                      Shop Now
+                    </NavLink>
+                  </p>
+                </div>
               ) : (
                 <ul className="list-group">
-            {fav.map((item) => (
-              <li
-                key={item.id}
-                className="list-group-item d-flex justify-content-between align-items-center mb-2 flex-wrap"
-              >
-                <div>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                    className="card-img-top img-fluid"
-                    style={{ height: "5rem", objectFit: "contain" }}
-                  />{" "}
-                </div>
-                <div className="me-2">
-                  <strong>{item.name || item.title}</strong> - {item.price} $
-                </div>
-                <div className="btn-group" role="group" aria-label="Favorite Actions">
-  <button
-    className="btn btn-sm btn-outline-primary"
-    onClick={() => {
-      dispatch(addToCart(item));
-      dispatch(removeOneFromFav(item.id));
-    }}
-  >
-    Add To Cart
-  </button>
-  <button
-    className="btn btn-sm btn-danger"
-    onClick={() => dispatch(removeOneFromFav(item.id))}
-  >
-    Remove
-  </button>
-</div>
-
-              </li>
-            ))}
-          </ul>
+                  {fav.map((item) => (
+                    <li
+                      key={item.id}
+                      className="list-group-item d-flex justify-content-between align-items-center mb-2 flex-wrap"
+                    >
+                      <div>
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          loading="lazy"
+                          className="card-img-top img-fluid"
+                          style={{ height: "5rem", objectFit: "contain" }}
+                        />{" "}
+                      </div>
+                      <div className="me-2">
+                        <strong>{item.name || item.title}</strong> -{" "}
+                        {item.price} $
+                      </div>
+                      <div
+                        className="btn-group"
+                        role="group"
+                        aria-label="Favorite Actions"
+                      >
+                        <button
+                          className="btn btn-sm btn-outline-primary"
+                          onClick={() => {
+                            dispatch(addToCart(item));
+                            dispatch(removeOneFromFav(item.id));
+                          }}
+                        >
+                          Add To Cart
+                        </button>
+                        <button
+                          className="btn btn-sm btn-danger"
+                          onClick={() => dispatch(removeOneFromFav(item.id))}
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
           </div>

@@ -1,16 +1,21 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import MyAccount, { EditProfile, Favorite, Orders } from "./UserLeftSection";
 import { useEffect, useState } from "react";
-import Cookies from "js-cookie"
+import Cookies from "js-cookie";
 
 const User = () => {
+  const [activeSection, setActiveSection] = useState(
+     ""
+  ); 
+  const location = useLocation();
+
   const tokenExpiry = localStorage.getItem("tokenExpiry");
   const savedData = localStorage.getItem("formData");
   const parsedData = JSON.parse(savedData);
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (!tokenExpiry) {
       Swal.fire({
@@ -18,11 +23,18 @@ const User = () => {
         title: "Not Logined In!",
         text: "You are not logged in! Redirecting to Login.",
         confirmButtonText: "OK",
-        timer:4000,
+        timer: 4000,
         timerProgressBar: true,
       });
       navigate("/login");
-  }},[tokenExpiry, navigate]);
+    }
+    // to get pathName of url & setToActive
+    if (location.pathname.split("/")[2]) {
+      setActiveSection(`${location.pathname.split("/")[2]}`);
+    }else{
+      setActiveSection("myAccount")
+    }
+  }, [tokenExpiry, navigate, location]);
 
   const handleLogout = () => {
     sessionStorage.clear();
@@ -43,14 +55,12 @@ const User = () => {
       window.location.reload();
     }, 3000);
   };
-  const [activeSection, setActiveSection] = useState(
-        localStorage.getItem("activeSection") || "myAccount"); // Default active section
 
-        const handleSectionChange = (section) => {
-          setActiveSection(section);
-          localStorage.setItem("activeSection", section);
-          navigate(section)
-        };
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+    // localStorage.setItem("activeSection", section);
+    navigate(section);
+  };
 
   const renderSectionContent = () => {
     switch (activeSection) {
@@ -66,6 +76,7 @@ const User = () => {
         return <div>Select a section to view</div>;
     }
   };
+
   return (
     <div className="container my-5 text-center">
       <h2 className="fw-bold mb-4">Welcome {parsedData.name}</h2>
