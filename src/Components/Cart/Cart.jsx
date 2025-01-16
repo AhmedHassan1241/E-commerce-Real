@@ -40,12 +40,15 @@ const Cart = () => {
     setActiveCart(section)
     navigate(section);
   };
-
+  const handlePaymentConfirm = (method) => {
+    console.log("Selected Payment Method:", method);
+    // Handle payment method (e.g., navigate to the next step)
+  };
   const cartRenderSection = () => {
     if (activeCart) {
       return (
         <>
-          <PaymenMethod />
+          <PaymenMethod onConfirm={handlePaymentConfirm} />
         </>
       );
     }
@@ -126,24 +129,26 @@ const Cart = () => {
             {cart.length ? (
               <div className="d-flex justify-content-center align-content-center text-center mb-5">
                 <div className="card w-50 text-center">
-                  <h5 className="card-header">Total Order</h5>
+                  <h5 className="card-header">Subtotal ( {total.quantity} Items ) </h5>
                   <div className="card-body">
+                  <h6 className="card-text pb-2 d-flex justify-content-between">
+                      <span className="fw-bold">Number of Items : </span>
+                      {total.quantity} 
+                    </h6>
                     <h6 className="card-text pb-2 d-flex justify-content-between">
-                      <span className="fw-bold">Items : </span>
+                      <span className="fw-bold">Price of (<span className="text-primary">{total.quantity}</span>) Items : </span>
                       {total.price.toFixed(2)} $
                     </h6>
-                    <h6 className="card-text pb-2 d-flex justify-content-between">
-                      <span className="fw-bold">Shipping & handling : </span> 20
-                      $
-                    </h6>
-                    <h6 className="card-text border my-3 fw-bold bg-body-tertiary rounded p-2">
-                      Total Price : {(total.price + 20).toFixed(2)} $
-                    </h6>
+                    
+                    {/* <h6 className="card-text border my-3 fw-bold bg-body-tertiary rounded p-2">
+                      Total Price : {(total.price).toFixed(2)} $
+                    </h6> */}
                     <button
                       onClick={() => handleBuy("payment")}
                       className="btn btn-warning mt-4"
                     >
-                      Proceed To Buy ({total.quantity}) Items
+                      {/* Proceed To Buy ({total.quantity}) Items */}
+                      Proceed To Buy Items
                     </button>
                   </div>
                 </div>
@@ -166,7 +171,6 @@ const Cart = () => {
       ) : (
         <>
           <div className="card-body">{cartRenderSection()}</div>
-          <button onClick={() => navigate("/cart")}>back</button>
         </>
       )}
     </>
