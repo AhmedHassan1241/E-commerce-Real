@@ -20,7 +20,7 @@ import MyAccount, {
   Favorite,
   Orders,
 } from "./Section/User/UserLeftSection";
-import { PaymenMethod } from "./Section";
+import { OrderSuccess, PaymenMethod } from "./Section";
 
 function App() {
   return (
@@ -51,6 +51,7 @@ function App() {
             <Route path="myFavorite" element={<Favorite />} />
             <Route path="editProfile" element={<EditProfile />} />
           </Route>
+          <Route path="/orderSuccess" element={<OrderSuccess/>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -4,11 +4,19 @@ import { BsFillCreditCard2FrontFill } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { addToCart, removeOneFromCart } from "../../Components/CartSlice/CartSlice";
+import {
+  addToCart,
+  removeAllFromCart,
+  removeOneFromCart,
+} from "../../Components/CartSlice/CartSlice";
+import { CreditCardForm, PayPalButton } from "../../Components";
 
-const PaymentMethod = ({ onConfirm }) => {
+const PaymentMethod = () => {
   const dispatch = useDispatch();
   const [total, setTotal] = useState({ price: 0, quantity: 0 });
+  const [confirmedOrders, setConfirmedOrders] = useState(
+    JSON.parse(localStorage.getItem("ConfirmedOrders"))||[],
+  );
   const [selectedMethod, setSelectedMethod] = useState(
     "Please Select Payment!!"
   );
@@ -18,6 +26,7 @@ const PaymentMethod = ({ onConfirm }) => {
 
   const user = JSON.parse(localStorage.getItem("formData"));
   const cart = useSelector((state) => state.cart.items);
+  
 
   useEffect(() => {
     const totalPrice = cart.reduce(
@@ -26,6 +35,7 @@ const PaymentMethod = ({ onConfirm }) => {
     );
     const items = cart.reduce((sum, item) => sum + item.quantity, 0);
     setTotal({ price: totalPrice, quantity: items });
+    
   }, [cart]);
 
   const handleSelect = (method, price) => {
@@ -34,10 +44,23 @@ const PaymentMethod = ({ onConfirm }) => {
   };
 
   const handleConfirm = () => {
-    if (!selectedMethod) {
-      alert("Please select a payment method!");
-      return;
-    }
+    const orderDetails = {
+      user,
+      items: cart,
+      total: (total.price + paymentPrice + 20).toFixed(2),
+      paymentMethod: selectedMethod,
+      deliveryDate: formatted1,
+      deliveryAddress: "المنوفية - مدينة السادات - مجاورة 20",
+    };
+    setConfirmedOrders((prev)=>{
+      const orderAll = [...prev, orderDetails];
+      localStorage.setItem("ConfirmedOrders", JSON.stringify(orderAll));
+    });
+    cart.map((item) => {
+      dispatch(removeAllFromCart(item.id));
+    });
+    // Navigate to the confirmation or success page
+    navigate("/orderSuccess", { state: { orderDetails } });
     // Pass the selected method to the parent component or handle it here
   };
   // const currentDate = new Date();
@@ -52,12 +75,12 @@ const PaymentMethod = ({ onConfirm }) => {
   const formatted1 = `${dayN} ${month} ${year}`;
   const formatted2 = `${dayS}, ${dayN} ${month}`;
 
-
-  onConfirm && onConfirm(selectedMethod);
+  // onConfirm && onConfirm(selectedMethod);
 
   return (
     
     <div className="container my-5">
+      {cart.length>0 ? (
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="card shadow-lg">
@@ -65,7 +88,8 @@ const PaymentMethod = ({ onConfirm }) => {
               <h4 className="mb-0">Select Payment Method</h4>
             </div>
             <div className="card-body bg-light">
-              <form aria-required>
+              <form  aria-required>
+                {/* Credit Card Section */}
                 <div
                   className="form-check p-3 border rounded mb-3"
                   onClick={() => handleSelect("Credit Card", 50)}
@@ -92,8 +116,21 @@ const PaymentMethod = ({ onConfirm }) => {
                     </i>{" "}
                     Credit Card
                   </label>
+
+                  {/* Display Credit Card Payment Form */}
+                  {selectedMethod === "Credit Card" && (
+                    <div
+                      style={{ position: "relative", zIndex: 0 }}
+                      className="mt-3"
+                    >
+                      <CreditCardForm
+                        // total={(total.price + paymentPrice + 20).toFixed(2)}
+                      />
+                    </div>
+                  )}
                 </div>
 
+                {/* PayPal Section */}
                 <div
                   className="form-check p-3 border rounded mb-3"
                   onClick={() => handleSelect("PayPal", 40)}
@@ -118,8 +155,21 @@ const PaymentMethod = ({ onConfirm }) => {
                     </i>{" "}
                     PayPal
                   </label>
+
+                  {/* Display PayPal Button */}
+                  {selectedMethod === "PayPal" && (
+                    <div
+                      style={{ position: "relative", zIndex: 0 }}
+                      className="mt-3"
+                    >
+                      <PayPalButton
+                        total={(total.price + paymentPrice + 20).toFixed(2)}
+                      />
+                    </div>
+                  )}
                 </div>
 
+                {/* Cash on Delivery Section */}
                 <div
                   className="form-check p-3 border rounded mb-3"
                   onClick={() => handleSelect("Cash on Delivery", 12)}
@@ -146,17 +196,19 @@ const PaymentMethod = ({ onConfirm }) => {
                     </i>{" "}
                     Cash on Delivery
                   </label>
-                  <p
-                    className={`text-muted ms-4 ${
-                      selectedMethod === "Cash on Delivery"
-                        ? "alert alert-warning"
-                        : ""
-                    }`}
-                  >
-                    Pay by cash on delivery. Non-refundable COD fees of EGP 12
-                    may apply. Learn more. Pay online for contactless
-                    deliveries.
-                  </p>
+                  {selectedMethod === "Cash on Delivery" && (
+                    <p
+                      className={`text-muted ms-4 ${
+                        selectedMethod === "Cash on Delivery"
+                          ? "alert alert-warning"
+                          : ""
+                      }`}
+                    >
+                      Pay by cash on delivery. Non-refundable COD fees of EGP 12
+                      may apply. Learn more. Pay online for contactless
+                      deliveries.
+                    </p>
+                  )}
                 </div>
               </form>
             </div>
@@ -226,8 +278,8 @@ const PaymentMethod = ({ onConfirm }) => {
                         {formatted2}
                       </span>
                     </label>
-                      {cart.length === 0 ? (
-                    <div className="text-muted ms-2 mt-2 alert alert-warning">
+                    {cart.length === 0 ? (
+                      <div className="text-muted ms-2 mt-2 alert alert-warning">
                         <div
                           className="text-center alert alert-warning"
                           role="alert"
@@ -239,16 +291,15 @@ const PaymentMethod = ({ onConfirm }) => {
                             </NavLink>
                           </p>
                         </div>
-                        </div>
-                      ) : (
-                        <ul className="list-group">
-                          {cart.map((item) => (
-                                                <div className="text-muted ms-2 mt-2 alert alert-warning"                              key={item.id}
->
-
-                            <li
-                              className="list-group-item d-flex justify-content-between align-items-center mb-2"
-                            >
+                      </div>
+                    ) : (
+                      <ul className="list-group">
+                        {cart.map((item) => (
+                          <div
+                            className="text-muted ms-2 mt-2 alert alert-warning"
+                            key={item.id}
+                          >
+                            <li className="list-group-item d-flex justify-content-between align-items-center mb-2">
                               <div>
                                 <img
                                   src={item.image}
@@ -296,9 +347,9 @@ const PaymentMethod = ({ onConfirm }) => {
                               </div>
                             </li>
                           </div>
-                          ))}
-                        </ul>
-                      )}
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </h6>
               </div>
@@ -309,7 +360,9 @@ const PaymentMethod = ({ onConfirm }) => {
             <button
               className="btn btn-success"
               onClick={handleConfirm}
-              disabled={!selectedMethod}
+              disabled={
+                (!selectedMethod || selectedMethod === "Please Select Payment!!")
+              }
             >
               Confirm Payment
             </button>
@@ -321,7 +374,73 @@ const PaymentMethod = ({ onConfirm }) => {
             </button>
           </div>
         </div>
-      </div>
+      </div>):( <div
+              className="bg-light-subtle"
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                padding: "20px",
+              }}
+            >
+              <div className="w-75">
+                {cart.length === 0 ? (
+                  <div className="text-center alert alert-warning" role="alert">
+                    <p className="text-muted my-5">
+                      No items in cart.
+                      <NavLink className="ms-2" to="/">
+                        Shop Now
+                      </NavLink>
+                    </p>
+                  </div>
+                ) : (
+                  <ul className="list-group">
+                    {cart.map((item) => (
+                      <li
+                        key={item.id}
+                        className="list-group-item d-flex justify-content-between align-items-center mb-2"
+                      >
+                        <div>
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            loading="lazy"
+                            className="card-img-top img-fluid"
+                            style={{ height: "5rem", objectFit: "contain" }}
+                          />{" "}
+                        </div>
+                        <div className="me-5 text-truncate">
+                          <strong>{item.name || item.title}</strong> -{" "}
+                          {item.price} $
+                        </div>
+                        <div>
+                          <button
+                            className="btn btn-sm btn-outline-primary"
+                            onClick={() => dispatch(addToCart(item))}
+                            style={{ marginRight: "5px" }}
+                          >
+                            +
+                          </button>
+                          <span className="mx-1 fw-bold">{item.quantity}</span>
+                          <button
+                            className="btn btn-sm btn-outline-danger"
+                            onClick={() => dispatch(removeOneFromCart(item.id))}
+                            style={{ margin: "0 5px" }}
+                          >
+                            -
+                          </button>
+                          <button
+                            className="btn btn-sm btn-danger"
+                            onClick={() => dispatch(removeAllFromCart(item.id))}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>)}
     </div>
   );
 };

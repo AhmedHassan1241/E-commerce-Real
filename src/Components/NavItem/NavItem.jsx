@@ -37,7 +37,8 @@ const handleLogout = () => {
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   return (
-    <div className="navItem position-sticky top-0 z-3">
+    <div className="navItem position-sticky top-0 z-3"
+    style={{zIndex:"5544999955555"}}>
       <nav
         className="navbar navbar-expand-lg sticky-top shadow"
         style={{ flexWrap: "wrap", backgroundColor: "white" }}
