@@ -53,6 +53,7 @@ const [payed ,setPayed] = useState(false)
     const cardElement = elements.getElement(CardElement);
 
     // Create a payment method
+    // eslint-disable-next-line no-unused-vars
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: cardElement,

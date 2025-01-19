@@ -39,6 +39,8 @@ const User = () => {
   const handleLogout = () => {
     sessionStorage.clear();
     Cookies.remove("token");
+    Object.keys(Cookies.get()).forEach((cookieName) => Cookies.remove(cookieName));
+
     localStorage.clear();
 
     Swal.fire({

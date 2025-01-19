@@ -126,7 +126,7 @@ const Cart = () => {
                 )}
               </div>
             </div>
-            {cart.length ? (
+            {cart.length && (
               <div className="d-flex justify-content-center align-content-center text-center mb-5">
                 <div className="card w-50 text-center">
                   <h5 className="card-header">Subtotal ( {total.quantity} Items ) </h5>
@@ -153,8 +153,6 @@ const Cart = () => {
                   </div>
                 </div>
               </div>
-            ) : (
-              ""
             )}
           </div>
         ) : (

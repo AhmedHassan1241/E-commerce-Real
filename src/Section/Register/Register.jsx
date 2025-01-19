@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { TiLockClosed, TiLockOpen } from "react-icons/ti";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -14,6 +15,8 @@ const Register = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [show, setShow] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -141,8 +144,9 @@ const Register = () => {
             <label htmlFor="password" className="form-label">
               Password:
             </label>
+            <div className="position-relative">
             <input
-              type="password"
+              type={show?"text":"password"}
               id="password"
               value={formData.password}
               onChange={(e) =>
@@ -152,6 +156,10 @@ const Register = () => {
               className="form-control"
               placeholder="Enter your password"
             />
+                                  {formData.password?(<span onClick={()=>setShow(!show)} className="position-absolute" style={{bottom:"20%",right:"2%",fontSize:"120%", cursor:"pointer"}}>{show?<TiLockOpen/>:<TiLockClosed/>}</span>)
+                      :("")}
+            
+                </div>
           </div>
           {error && <p className="text-danger">{error}</p>}
           <button type="submit" className="btn btn-primary" disabled={loading}>

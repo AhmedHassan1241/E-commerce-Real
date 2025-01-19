@@ -10,10 +10,12 @@ import {
   removeOneFromCart,
 } from "../../Components/CartSlice/CartSlice";
 import { CreditCardForm, PayPalButton } from "../../Components";
+import Swal from "sweetalert2";
 
 const PaymentMethod = () => {
   const dispatch = useDispatch();
   const [total, setTotal] = useState({ price: 0, quantity: 0 });
+  // eslint-disable-next-line no-unused-vars
   const [confirmedOrders, setConfirmedOrders] = useState(
     JSON.parse(localStorage.getItem("ConfirmedOrders"))||[],
   );
@@ -60,6 +62,26 @@ const PaymentMethod = () => {
       dispatch(removeAllFromCart(item.id));
     });
     // Navigate to the confirmation or success page
+     const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.style.top="7%"
+            toast.style.fontSize = "15px";
+            toast.style.padding = "4px";
+            toast.style.width = "330px";
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+          
+        });
+        Toast.fire({
+          icon:"success",
+          title:"Order Done successfully"
+        })
     navigate("/orderSuccess", { state: { orderDetails } });
     // Pass the selected method to the parent component or handle it here
   };
@@ -92,7 +114,7 @@ const PaymentMethod = () => {
                 {/* Credit Card Section */}
                 <div
                   className="form-check p-3 border rounded mb-3"
-                  onClick={() => handleSelect("Credit Card", 50)}
+                  onClick={() => handleSelect("Credit Card", (total.price*2.5/100))}
                 >
                   <input
                     className="form-check-input"
@@ -101,7 +123,7 @@ const PaymentMethod = () => {
                     id="creditCard"
                     value="Credit Card"
                     checked={selectedMethod === "Credit Card"}
-                    onChange={() => handleSelect("Credit Card", 50)}
+                    onChange={() => handleSelect("Credit Card", (total.price*2.5/100))}
                   />
                   <label
                     className={`form-check-label ${
@@ -133,7 +155,7 @@ const PaymentMethod = () => {
                 {/* PayPal Section */}
                 <div
                   className="form-check p-3 border rounded mb-3"
-                  onClick={() => handleSelect("PayPal", 40)}
+                  onClick={() => handleSelect("PayPal", (total.price*3/100))}
                 >
                   <input
                     className="form-check-input"
@@ -142,7 +164,7 @@ const PaymentMethod = () => {
                     id="paypal"
                     value="PayPal"
                     checked={selectedMethod === "PayPal"}
-                    onChange={() => handleSelect("PayPal", 40)}
+                    onChange={() => handleSelect("PayPal", (total.price*3/100))}
                   />
                   <label
                     className={`form-check-label ${

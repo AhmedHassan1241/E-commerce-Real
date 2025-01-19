@@ -2,11 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { TiLockClosed,TiLockOpen  } from "react-icons/ti";
 import Cookies from "js-cookie"
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   //   const [tokenData, setTokenData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -85,12 +87,14 @@ const Login = () => {
             className="form-control"
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 ">
           <label htmlFor="password" className="form-label">
             Password
           </label>
+          <div className="position-relative">
+
           <input
-            type="password"
+            type={show?"text":"password"}
             id="password"
             placeholder="Enter your password"
             value={formData.password}
@@ -98,8 +102,11 @@ const Login = () => {
               setFormData({ ...formData, password: e.target.value })
             }
             required
-            className="form-control"
-          />
+            className="form-control" 
+            />
+            {formData.password?(
+          <span onClick={()=>setShow(!show)} className="position-absolute" style={{bottom:"20%",right:"2%",fontSize:"120%", cursor:"pointer"}}>{show?<TiLockOpen/>:<TiLockClosed/>}</span>):""}
+            </div>
         </div>
         {error && <p className="text-danger">{error}</p>}
         <button

@@ -13,6 +13,8 @@ const NavItem = () => {
 const handleLogout = () => {
     sessionStorage.clear();
     Cookies.remove("token");
+    Object.keys(Cookies.get()).forEach((cookieName) => Cookies.remove(cookieName));
+
     localStorage.clear();
     Swal.fire({
       icon: "success",
@@ -102,7 +104,8 @@ const handleLogout = () => {
                 </a>
               </li>
             </ul>
-            <form
+            {/* Part of search */}
+            {/* <form
               className="d-flex ms-auto align-items-center me-0 d-xl-flex mb-3 mb-lg-0"
               role="search"
             >
@@ -116,10 +119,11 @@ const handleLogout = () => {
                 className="position-relative fs-4"
                 style={{ right: "35px" }}
               ></IoSearch>
-            </form>
+            </form> */}
+            <hr className=" border-3 border-dark " />
             <div
               className="icons d-flex align-items-center justify-content-between pe-2 my-sm-2 my-lg-0"
-              style={{ width: "175px" }}
+              style={{ width: "190px" }}
             >
               <NavLink
                 to={tokenExpiry ? "/user" : "/login"}
@@ -129,7 +133,7 @@ const handleLogout = () => {
               >
                 <div className="d-flex align-content-center" 
                 >
-                  {tokenExpiry? (parsedData.profile_image.length > 0 ?(
+                  {tokenExpiry&& (parsedData.profile_image.length > 0 ?(
                     <img
                       src={parsedData.profile_image}
                       width={26}
@@ -144,7 +148,7 @@ const handleLogout = () => {
                       style={{ fontSize: "24px", cursor: "pointer",    marginTop: "4px" }}
                       title="profile"
                     ></FaRegUser>
-                  )):("")}
+                  ))}
 
                   {!tokenExpiry ? (
                     <button

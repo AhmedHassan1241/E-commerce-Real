@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { RiFilter2Line } from "react-icons/ri";
 
 const AsideFilter = ({ filters, onChangeFilter }) => {
   const initalState = { category: "", brand: "", price: "" };
@@ -22,7 +23,7 @@ const AsideFilter = ({ filters, onChangeFilter }) => {
       className="container-fluid card p-3 text-center text-lg-start shadow-lg"
     //   style={{ width: "100%" }}
     >
-      <h3 className="mb-4">Filters</h3>
+      <h3 className="mb-4"><span><RiFilter2Line/></span> Filters</h3>
       <div className="d-flex d-lg-block justify-content-between">
         <div className="mb-3">
           <label htmlFor="category" className="form-label fw-bold">

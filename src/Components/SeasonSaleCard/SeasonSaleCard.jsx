@@ -111,7 +111,7 @@ const  SeasonSaleCard=({items})=> {
             >
               <h6 className="title fw-bolder fs-6">{item.title}</h6>
               <p
-                className="fs-6 fw-lighter text-center"
+                className="fs-6 fw-light text-center"
                 style={{height: "6rem"}}
               >
                 {item.description}

@@ -10,6 +10,7 @@ import {
   WrapperFooterLink,
   WrapperFooterLinkLast,
 } from "../../Components";
+import { NavLink } from "react-router-dom";
 const Footer = () => {
   const tokenExpiry = localStorage.getItem("tokenExpiry");
   const scrollToTop = () => {
@@ -32,7 +33,7 @@ const Footer = () => {
         ></FaChevronUp>
         <p style={{ margin: "0", fontWeight: "300" }}>BACK TO TOP</p>
       </div>
-      {!tokenExpiry ? (
+      {!tokenExpiry && (
         <div
           className="row m-0 justify-content-center align-items-center text-center bg-black"
           style={{ height: "35vh", columnGap: "2rem", rowGap: "0" }}
@@ -44,15 +45,13 @@ const Footer = () => {
             BECOME A MEMBER & GET 15% OFF
           </h2>
           <div className="btn-wrapper mt c m-bottom">
-            <a href="#.">
+            <NavLink to="/register">
               <span>
                 SIGN UP FOR FREE <span className="fs-5">&#8594;</span>
               </span>
-            </a>
+            </NavLink>
           </div>
         </div>
-      ) : (
-        ""
       )}
       {/* <!-- BEFORE FOOTER --> */}
       {/* <!-- FOOTER --> */}
