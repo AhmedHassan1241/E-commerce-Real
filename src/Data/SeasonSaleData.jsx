@@ -1,4 +1,4 @@
-import jacket from '../Assets/Images/jacket.jpg';
+import jacket from '../Assets/Images/jackett.jpg';
 import shoes from '../Assets/Images/shoes.jpg';
 import shoWhite from '../Assets/Images/sho-white.jpg';
 import sho from '../Assets/Images/sho.jpg';
