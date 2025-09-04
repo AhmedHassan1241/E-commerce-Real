@@ -1,16 +1,16 @@
-:root{
-    --main-color-black:#000;
-    --main-color-white:#ffffff;
+:root {
+  --main-color-black: #000;
+  --main-color-white: #ffffff;
 }
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-body{
-    font-family: "Kanit", sans-serif;
+body {
+  font-family: "Kanit", sans-serif;
 }
-p{
-    margin-bottom: 0;
+p {
+  margin-bottom: 0;
 }
 
 /*.form-control {
@@ -30,18 +30,18 @@ p{
   font-weight: 300;
   opacity: 0.5;
 } */
-.banner div p a{
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    font-size: 13px;
-    transition: 0.3s;
-    cursor: pointer;
-    letter-spacing: 1px;
+.banner div p a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+  transition: 0.3s;
+  cursor: pointer;
+  letter-spacing: 1px;
 }
 
-.banner div p a:hover{
-    border-bottom: 1px solid #fff;
+.banner div p a:hover {
+  border-bottom: 1px solid #fff;
 }
 
 /* .navbar-toggler {
@@ -57,7 +57,7 @@ p{
     background-position: center;
     width: 100%;
 } */
- /* .btn-wrapper{
+/* .btn-wrapper{
     background-color: var(--main-color-white);
     width: 220px;
     height: 50px;
@@ -290,7 +290,7 @@ top:57px
         display: none;
     }
  .home{
-    background-image: url("../../Assets/Images/home_imgSmallScreen.jpg");
+    background-image: url("../../assets/Images/home_imgSmallScreen.jpg");
     background-size:cover;
     background-repeat: no-repeat;
     background-position: 0px;
@@ -314,7 +314,7 @@ top:57px
 
 @media (max-width:550px) {
     .section-yazzy{
-        background-image: url('../../Assets/Images//jbg.webp') !important;
+        background-image: url('../../assets/Images//jbg.webp') !important;
         background-size: cover;
         background-position: center !important;
         height: 145vw !important;
@@ -342,7 +342,7 @@ top:57px
 
 @media (max-width:767px) {
     .main-page{
-        background-image: url('../../Assets/Images/man-sm.jpg') !important;
+        background-image: url('../../assets/Images/man-sm.jpg') !important;
     }
   
 }

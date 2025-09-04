@@ -1,15 +1,15 @@
-import shoes01 from "../Assets/Images/shoes1.avif";
-import shoes02 from "../Assets/Images/shoes2.avif";
-import shoes03 from "../Assets/Images/shoes3.avif";
-import shoes04 from "../Assets/Images/shoes4.avif";
-import shoes05 from "../Assets/Images/shoes5.avif";
-import shoes06 from "../Assets/Images/shoes6.avif";
-import shoes07 from "../Assets/Images/shoes7.avif";
-import shoes08 from "../Assets/Images/shoes8.avif";
-import shoes09 from "../Assets/Images/shoes9.avif";
-import shoes10 from "../Assets/Images/shoes10.avif";
-import shoes11 from "../Assets/Images/shoes11.avif";
-import shoes12 from "../Assets/Images/shoes12.avif";
+import shoes01 from "../assets/Images/shoes1.avif";
+import shoes02 from "../assets/Images/shoes2.avif";
+import shoes03 from "../assets/Images/shoes3.avif";
+import shoes04 from "../assets/Images/shoes4.avif";
+import shoes05 from "../assets/Images/shoes5.avif";
+import shoes06 from "../assets/Images/shoes6.avif";
+import shoes07 from "../assets/Images/shoes7.avif";
+import shoes08 from "../assets/Images/shoes8.avif";
+import shoes09 from "../assets/Images/shoes9.avif";
+import shoes10 from "../assets/Images/shoes10.avif";
+import shoes11 from "../assets/Images/shoes11.avif";
+import shoes12 from "../assets/Images/shoes12.avif";
 import { NewArrivals } from "../Section";
 const NewArrivalsData = () => {
   const data = [

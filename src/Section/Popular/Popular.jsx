@@ -1,18 +1,15 @@
 import { Category, SectionHeader } from "../../Components";
 
-// import arrowImg from "../../Assets/categories/arrow.svg";
-import menImg from "../../Assets/Images/men.jpg";
-import womenImg from "../../Assets/Images/woman.jpg";
-import kidsImg from "../../Assets/Images/kids.jpg";
+// import arrowImg from "../../assets/categories/arrow.svg";
+import menImg from "../../assets/Images/men.jpg";
+import womenImg from "../../assets/Images/woman.jpg";
+import kidsImg from "../../assets/Images/kids.jpg";
 
 import "./Popular.css";
 const Popular = () => {
   return (
     <>
-      <div
-        className="popular"
-        style={{  paddingBottom: "6rem" }}
-      >
+      <div className="popular" style={{ paddingBottom: "6rem" }}>
         <div className="container-fluid">
           <div className="head pb-3">
             <div className="row">
@@ -55,14 +52,14 @@ const Popular = () => {
               </div>
             </div>
           </div> */}
-            <div
-              className="categories row gx-3 gy-3"
-              // style={{ marginTop: "6rem" }}
-            >
-              <Category name="MEN" img={menImg} />
-              <Category name="WOMAN" img={womenImg} />
-              <Category name="KIDS" img={kidsImg} />
-            </div>
+          <div
+            className="categories row gx-3 gy-3"
+            // style={{ marginTop: "6rem" }}
+          >
+            <Category name="MEN" img={menImg} />
+            <Category name="WOMAN" img={womenImg} />
+            <Category name="KIDS" img={kidsImg} />
+          </div>
         </div>
       </div>
     </>

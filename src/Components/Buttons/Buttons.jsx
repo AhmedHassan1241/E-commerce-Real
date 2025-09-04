@@ -1,7 +1,7 @@
-import arrowImg from "../../Assets/Images/arrow.svg";
+import arrowImg from "../../assets/Images/arrow.svg";
 import "./Buttons.css";
 // eslint-disable-next-line react/prop-types
-const PrimaryButton = ({ children,link }) => {
+const PrimaryButton = ({ children, link }) => {
   return (
     <div className="btnPrimary">
       <div className=" btn-wrapper mt-2">
@@ -15,14 +15,14 @@ const PrimaryButton = ({ children,link }) => {
   );
 };
 // eslint-disable-next-line react/prop-types
-export const SecondaryButton = ({ children,link }) => {
-  return(
-  <div className="btn-wrapperr mt-2">
-        <a href={`#${link}`}>
+export const SecondaryButton = ({ children, link }) => {
+  return (
+    <div className="btn-wrapperr mt-2">
+      <a href={`#${link}`}>
         <span className="text-dark">{children}</span>
-      <img src={arrowImg} alt="" />
-    </a>
-  </div>
-  )
+        <img src={arrowImg} alt="" />
+      </a>
+    </div>
+  );
 };
 export default PrimaryButton;
