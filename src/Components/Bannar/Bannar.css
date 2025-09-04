@@ -290,7 +290,7 @@ top:57px
         display: none;
     }
  .home{
-    background-image: url("../../assets/images/home_imgSmallScreen.jpg");
+    background-image: url("../../assets/Images/home_imgSmallScreen.jpg");
     background-size:cover;
     background-repeat: no-repeat;
     background-position: 0px;
@@ -314,7 +314,7 @@ top:57px
 
 @media (max-width:550px) {
     .section-yazzy{
-        background-image: url('../../assets/images//jbg.webp') !important;
+        background-image: url('../../assets/Images//jbg.webp') !important;
         background-size: cover;
         background-position: center !important;
         height: 145vw !important;
@@ -342,7 +342,7 @@ top:57px
 
 @media (max-width:767px) {
     .main-page{
-        background-image: url('../../assets/images/man-sm.jpg') !important;
+        background-image: url('../../assets/Images/man-sm.jpg') !important;
     }
   
 }

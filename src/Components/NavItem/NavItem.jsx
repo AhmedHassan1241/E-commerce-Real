@@ -1,7 +1,7 @@
-import logo1 from "../../assets/images/logoo.svg";
+import logo1 from "../../assets/Images/logoo.svg";
 import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
-import bagIcon from "../../assets/images/bagIcon.svg";
+import bagIcon from "../../assets/Images/bagIcon.svg";
 import "./NavItem.css";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";

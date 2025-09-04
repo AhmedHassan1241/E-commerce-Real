@@ -1,6 +1,6 @@
 import { PrimaryButton } from "../../Components";
 import "./HomeHero.css";
-import message from "../../assets/images/message.svg";
+import message from "../../assets/Images/message.svg";
 import { useEffect, useState } from "react";
 const HomeHero = () => {
   const [isVisible, setIsVisible] = useState(false);

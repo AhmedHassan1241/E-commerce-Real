@@ -1,9 +1,9 @@
 import { Category, SectionHeader } from "../../Components";
 
 // import arrowImg from "../../assets/categories/arrow.svg";
-import menImg from "../../assets/images/men.jpg";
-import womenImg from "../../assets/images/woman.jpg";
-import kidsImg from "../../assets/images/kids.jpg";
+import menImg from "../../assets/Images/men.jpg";
+import womenImg from "../../assets/Images/woman.jpg";
+import kidsImg from "../../assets/Images/kids.jpg";
 
 import "./Popular.css";
 const Popular = () => {

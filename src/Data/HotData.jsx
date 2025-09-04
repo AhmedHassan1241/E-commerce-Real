@@ -1,7 +1,7 @@
-import sport01 from "../assets/images/sport1.jpg";
-import sport02 from "../assets/images/sport2.jpg";
-import sport03 from "../assets/images/sport3.jpg";
-import sport04 from "../assets/images/sport4.jpg";
+import sport01 from "../assets/Images/sport1.jpg";
+import sport02 from "../assets/Images/sport2.jpg";
+import sport03 from "../assets/Images/sport3.jpg";
+import sport04 from "../assets/Images/sport4.jpg";
 
 import { WhatsHot } from "../Section";
 // import { createContext } from 'react';

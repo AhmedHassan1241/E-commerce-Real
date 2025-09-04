@@ -1,4 +1,4 @@
-import arrowImg from "../../assets/images/arrow.svg";
+import arrowImg from "../../assets/Images/arrow.svg";
 import "./Buttons.css";
 // eslint-disable-next-line react/prop-types
 const PrimaryButton = ({ children, link }) => {

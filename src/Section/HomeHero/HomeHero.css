@@ -1,5 +1,5 @@
 .home {
-  background-image: url("../../assets/images/homeImg.jpg");
+  background-image: url("../../assets/Images/homeImg.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -22,7 +22,7 @@
 
 @media (max-width: 800px) {
   .home {
-    background-image: url("../../assets/images/home_imgSmallScreen.jpg");
+    background-image: url("../../assets/Images/home_imgSmallScreen.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { AsideFilter, ProductsList } from "../../Components";
-import img1 from "../../assets/images/sport1.jpg";
-import img2 from "../../assets/images/sport2.jpg";
-import img3 from "../../assets/images/sport3.jpg";
-import img4 from "../../assets/images/sport4.jpg";
+import img1 from "../../assets/Images/sport1.jpg";
+import img2 from "../../assets/Images/sport2.jpg";
+import img3 from "../../assets/Images/sport3.jpg";
+import img4 from "../../assets/Images/sport4.jpg";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 const ShowProduct = () => {
