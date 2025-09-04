@@ -1,6 +1,5 @@
 import logo1 from "../../assets/Images/logoo.svg";
 import { FaRegUser } from "react-icons/fa";
-import { IoSearch } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 import bagIcon from "../../assets/Images/bagIcon.svg";
 import "./NavItem.css";
