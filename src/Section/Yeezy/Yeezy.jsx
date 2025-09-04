@@ -1,5 +1,5 @@
 import React from "react";
-import backImage from "../../assets/Images/jbgLa.png";
+import backImage from "../../assets/images/jbgLa.png";
 import styles from "./Yeezy.module.css";
 import { PrimaryButton } from "../../Components";
 const Yeezy = () => {

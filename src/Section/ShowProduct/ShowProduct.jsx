@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { AsideFilter, ProductsList } from "../../Components";
-import img1 from "../../assets/Images/sport1.jpg";
-import img2 from "../../assets/Images/sport2.jpg";
-import img3 from "../../assets/Images/sport3.jpg";
-import img4 from "../../assets/Images/sport4.jpg";
+import img1 from "../../assets/images/sport1.jpg";
+import img2 from "../../assets/images/sport2.jpg";
+import img3 from "../../assets/images/sport3.jpg";
+import img4 from "../../assets/images/sport4.jpg";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 const ShowProduct = () => {
@@ -16,7 +16,7 @@ const ShowProduct = () => {
   const products = [
     {
       id: 1,
-      dd:"one",
+      dd: "one",
       image: img1,
       name: "iPhone",
       category: "Electronics",
@@ -25,7 +25,7 @@ const ShowProduct = () => {
     },
     {
       id: 2,
-      dd:"two",
+      dd: "two",
       image: img2,
       name: "T-shirt",
       category: "Clothing",
@@ -34,7 +34,7 @@ const ShowProduct = () => {
     },
     {
       id: 3,
-      dd:"three",
+      dd: "three",
       image: img3,
       name: "Headphones",
       category: "Electronics",
@@ -43,7 +43,7 @@ const ShowProduct = () => {
     },
     {
       id: 4,
-      dd:"four",
+      dd: "four",
       image: img4,
       name: "Headphones",
       category: "Electronics",
@@ -55,7 +55,7 @@ const ShowProduct = () => {
 
   const handleFilterChanged = (selectedFilters) => {
     const filtered = products.filter(
-      (product) =>(
+      (product) =>
         (!selectedFilters.category ||
           selectedFilters.category === product.category) &&
         (!selectedFilters.price ||
@@ -66,7 +66,7 @@ const ShowProduct = () => {
           (selectedFilters.price === filters.prices[2] &&
             product.price > 100)) &&
         (!selectedFilters.brand || selectedFilters.brand === product.brand)
-    ));
+    );
     setFilteredProducts(filtered);
   };
   return (

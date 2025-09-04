@@ -1,6 +1,6 @@
 import { PrimaryButton } from "../../Components";
 import "./HomeHero.css";
-import message from "../../assets/Images/message.svg";
+import message from "../../assets/images/message.svg";
 import { useEffect, useState } from "react";
 const HomeHero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,7 +53,7 @@ const HomeHero = () => {
             paddingTop: "0",
             width: "50px",
             height: "50px",
-            border: "1px solid white"
+            border: "1px solid white",
           }}
         >
           <img src={message} alt="" />

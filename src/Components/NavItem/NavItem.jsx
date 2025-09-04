@@ -1,18 +1,19 @@
-import logo1 from "../../assets/Images/logoo.svg";
+import logo1 from "../../assets/images/logoo.svg";
 import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
-import bagIcon from "../../assets/Images/bagIcon.svg";
+import bagIcon from "../../assets/images/bagIcon.svg";
 import "./NavItem.css";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import Cookies from "js-cookie"
+import Cookies from "js-cookie";
 import { NavLink } from "react-router-dom";
 const NavItem = () => {
-
-const handleLogout = () => {
+  const handleLogout = () => {
     sessionStorage.clear();
     Cookies.remove("token");
-    Object.keys(Cookies.get()).forEach((cookieName) => Cookies.remove(cookieName));
+    Object.keys(Cookies.get()).forEach((cookieName) =>
+      Cookies.remove(cookieName)
+    );
 
     localStorage.clear();
     Swal.fire({
@@ -25,7 +26,6 @@ const handleLogout = () => {
     });
     setTimeout(() => {
       window.location.href = "/";
-      
     }, 3000);
   };
   // Toggle the navbar collapse
@@ -38,8 +38,10 @@ const handleLogout = () => {
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   return (
-    <div className="navItem position-sticky top-0 z-3"
-    style={{zIndex:"5544999955555"}}>
+    <div
+      className="navItem position-sticky top-0 z-3"
+      style={{ zIndex: "5544999955555" }}
+    >
       <nav
         className="navbar navbar-expand-lg sticky-top shadow"
         style={{ flexWrap: "wrap", backgroundColor: "white" }}
@@ -128,48 +130,53 @@ const handleLogout = () => {
                 to={tokenExpiry ? "/user" : "/login"}
                 title="User"
                 aria-label="User"
-                style={{ color: "#000",textDecoration:"none" }}
+                style={{ color: "#000", textDecoration: "none" }}
               >
-                <div className="d-flex align-content-center" 
-                >
-                  {tokenExpiry&& (parsedData.profile_image.length > 0 ?(
-                    <img
-                      src={parsedData.profile_image}
-                      width={26}
-                      height={27}
-                      className="rounded-5"
-                      title="Profile"
-                      alt="image profile"
-                      style={{marginTop: "2px"}}
-                    />
-                  ) : (
-                       <FaRegUser
-                      style={{ fontSize: "24px", cursor: "pointer",    marginTop: "4px" }}
-                      title="profile"
-                    ></FaRegUser>
-                  ))}
+                <div className="d-flex align-content-center">
+                  {tokenExpiry &&
+                    (parsedData.profile_image.length > 0 ? (
+                      <img
+                        src={parsedData.profile_image}
+                        width={26}
+                        height={27}
+                        className="rounded-5"
+                        title="Profile"
+                        alt="image profile"
+                        style={{ marginTop: "2px" }}
+                      />
+                    ) : (
+                      <FaRegUser
+                        style={{
+                          fontSize: "24px",
+                          cursor: "pointer",
+                          marginTop: "4px",
+                        }}
+                        title="profile"
+                      ></FaRegUser>
+                    ))}
 
                   {!tokenExpiry ? (
-                    <button
-                      className="btn btn-sm btn-outline-primary d-flex "
-                    >
+                    <button className="btn btn-sm btn-outline-primary d-flex ">
                       <FaRegUser
-                      style={{ fontSize: "16px", cursor: "pointer",margin:"2px 2px 0 0" }}
-                      title="profile"
-                    ></FaRegUser>
+                        style={{
+                          fontSize: "16px",
+                          cursor: "pointer",
+                          margin: "2px 2px 0 0",
+                        }}
+                        title="profile"
+                      ></FaRegUser>
                       Login
                     </button>
                   ) : (
                     <button
-                    className="btn btn-sm btn-outline-danger ms-1 "
-                    onClick={handleLogout}
+                      className="btn btn-sm btn-outline-danger ms-1 "
+                      onClick={handleLogout}
                     >
-
                       LogOut
                     </button>
                   )}
                 </div>
-                  </NavLink>
+              </NavLink>
               <NavLink
                 to="/fav"
                 title="Favorite Items"

@@ -7,8 +7,8 @@ import { useDispatch } from "react-redux";
 import { addToCart, removeOneFromCart } from "../CartSlice/CartSlice";
 import Slider from "react-slick";
 import "./ProductDetails.css";
-import img2 from "../../assets/Images/sale4W.avif";
-import img3 from "../../assets/Images/o8.avif";
+import img2 from "../../assets/images/sale4W.avif";
+import img3 from "../../assets/images/o8.avif";
 import { BsCartCheck } from "react-icons/bs";
 import { MdAddShoppingCart } from "react-icons/md";
 import Swal from "sweetalert2";
@@ -67,32 +67,33 @@ const ProductDetails = () => {
     // waitForAnimate: true,
     waitForAnimate: false,
   };
-   const handleFav = (product) => {
-      setFavorite((prev) => ({ ...prev, [product.id]: !prev[product.id] }));
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.style.top="7%"
-          toast.style.fontSize = "15px";
-          toast.style.padding = "4px";
-          toast.style.width = "330px";
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      });
-      
-      const isFav = !favorite[product.id];
-      
-      Toast.fire({
-        icon:isFav? "success":"warning",
-        title:isFav? "Added To Favorite successfully":"Removed From Favorite !!"
-      })
-  
-    };
+  const handleFav = (product) => {
+    setFavorite((prev) => ({ ...prev, [product.id]: !prev[product.id] }));
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.style.top = "7%";
+        toast.style.fontSize = "15px";
+        toast.style.padding = "4px";
+        toast.style.width = "330px";
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+
+    const isFav = !favorite[product.id];
+
+    Toast.fire({
+      icon: isFav ? "success" : "warning",
+      title: isFav
+        ? "Added To Favorite successfully"
+        : "Removed From Favorite !!",
+    });
+  };
   return (
     <div className="cardDetails container  my-5">
       <div className="card shadow-lg pt-1">
@@ -121,7 +122,9 @@ const ProductDetails = () => {
           </Slider>
         </div>
         <div className="card-body position-relative">
-          <h5 className="card-title fw-bold" style={{width: "90%"}}>{product.title}</h5>
+          <h5 className="card-title fw-bold" style={{ width: "90%" }}>
+            {product.title}
+          </h5>
           <p className="card-text">
             <strong>Category:</strong> {product.category}
           </p>
@@ -144,7 +147,7 @@ const ProductDetails = () => {
                     dispatch(addToCart(product));
                   }}
                 >
-                  Add to Cart <MdAddShoppingCart className="fs-5"/>
+                  Add to Cart <MdAddShoppingCart className="fs-5" />
                 </button>
               </div>
             ) : (
@@ -156,7 +159,7 @@ const ProductDetails = () => {
                     dispatch(removeOneFromCart(product.id));
                   }}
                 >
-                  Remove <BsCartX/>
+                  Remove <BsCartX />
                 </button>
                 <span className="fw-bold fs-4 mx-3">{counter}</span>
                 <button
@@ -166,7 +169,7 @@ const ProductDetails = () => {
                     dispatch(addToCart(product));
                   }}
                 >
-                  Add More <MdAddShoppingCart/>
+                  Add More <MdAddShoppingCart />
                 </button>
               </>
             )}
@@ -183,18 +186,24 @@ const ProductDetails = () => {
               </span>
             </button>
           </div>
-        <div
-                  className="m-2 position-absolute bg-light rounded-1"
-                  onClick={() => handleFav(product)}
-                  style={{ cursor: "pointer" ,top:"0%", right: "0%" }}
-                  >
-                  {!favorite[product.id] ? (
-                    <RiHeartAddLine onClick={()=>dispatch(addToFav(product))} style={{ width: "38px", height: "38px" }} />
-                  ) : (
-                    <FcLike onClick={()=>dispatch(removeOneFromFav(product.id))} style={{ width: "38px", height: "38px" }} />
-                  )}
-                </div>
-                  </div>
+          <div
+            className="m-2 position-absolute bg-light rounded-1"
+            onClick={() => handleFav(product)}
+            style={{ cursor: "pointer", top: "0%", right: "0%" }}
+          >
+            {!favorite[product.id] ? (
+              <RiHeartAddLine
+                onClick={() => dispatch(addToFav(product))}
+                style={{ width: "38px", height: "38px" }}
+              />
+            ) : (
+              <FcLike
+                onClick={() => dispatch(removeOneFromFav(product.id))}
+                style={{ width: "38px", height: "38px" }}
+              />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

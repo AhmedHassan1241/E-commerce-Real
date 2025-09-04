@@ -1,8 +1,8 @@
-import jacket from "../assets/Images/jackett.jpg";
-import shoes from "../assets/Images/shoes.jpg";
-import shoWhite from "../assets/Images/sho-white.jpg";
-import sho from "../assets/Images/sho.jpg";
-import tShirt from "../assets/Images/tShirt.jpg";
+import jacket from "../assets/images/jackett.jpg";
+import shoes from "../assets/images/shoes.jpg";
+import shoWhite from "../assets/images/sho-white.jpg";
+import sho from "../assets/images/sho.jpg";
+import tShirt from "../assets/images/tShirt.jpg";
 import { SeasonSale } from "../Section";
 
 const SeasonSaleData = () => {
